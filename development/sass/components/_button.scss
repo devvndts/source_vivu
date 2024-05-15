@@ -1,0 +1,123 @@
+@include render('button') {
+  // -----------------------------------------------------------------------------
+  // This file contains all styles related to the button component.
+  // -----------------------------------------------------------------------------
+  .btn-more{
+    $this: &;
+    // @extend %transition;
+    // color: #B78260;
+    // font-style: normal;
+    // font-weight: 500;
+    // font-size: 18px;
+    // line-height: 25px;
+    // @include grid(inline-flex, $flex-wrap: nowrap, $justify-content: center, $align-items: center, $gutter: null);
+    // @include transition;
+    // height: 40px;
+    // width: fit-content;
+    // margin: 0 auto;
+    // padding: 10px 15px;
+    // // cursor: pointer;
+    // display: inline-block;
+    // background-color: transparent;
+    // border-radius: 3px;
+    // border: 1px solid #B78260;
+    // color: #fff;
+    // position: relative;
+    @include m(white){
+      // color: #fff;
+      @include hover{
+        span{
+        // color: #ff0;
+          
+        }
+      }
+    }
+    span{
+      // @include setFont(15px, inherit, 600, var(--menu-font), 40px);
+      // @include z-index(share);
+      // position: relative;
+    }
+    i{
+      margin-left: 30px;
+      // font-size: 14px;
+    }
+    @include hover{
+      // color: #fff;
+      // background-color: var(--theme);
+    }
+  }
+  .btn-more2{
+    $this: &;
+    @include grid(inline-flex, $flex-wrap: nowrap, $justify-content: center, $align-items: center, $gutter: null);
+    @include transition;
+    // @include absolute($left: 50%, $bottom: -20px);
+    // @include translate(-50%, 0);
+    height: 45px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 24px;
+    cursor: pointer;
+    display: block;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    // margin-top: 20px;
+    position: relative;
+    @include m(white){
+      // color: #fff;
+      @include hover{
+        span{
+        // color: #ff0;
+        }
+      }
+    }
+    span{
+      @include setFont(15px, inherit, 400, null, 45px);
+      @include z-index(share);
+      position: relative;
+    }
+    @include hover{
+      color: #000;
+    }
+  }
+  .btn-circle{
+    $this: &;
+    @extend %transition;
+    @include box(54px,54px,100%);
+    color: #101010;
+    @include grid(inline-flex, $flex-wrap: nowrap, $justify-content: center, $align-items: center, $gutter: null);
+    // @include transition;
+    // height: 40px;
+    // width: fit-content;
+    // margin: 0 auto;
+    padding: 0;
+    // cursor: pointer;
+    // display: inline-block;
+    background-color: #D9D9D9;
+    border: 0;
+    // color: #fff;
+    // position: relative;
+    @include m(white){
+      // color: #fff;
+      @include hover{
+        span{
+        // color: #ff0;
+          
+        }
+      }
+    }
+    span{
+      // @include setFont(15px, inherit, 600, var(--menu-font), 40px);
+      // @include z-index(share);
+      // position: relative;
+    }
+    i{
+      // font-size: 14px;
+    }
+    @include hover{
+      color: #fff;
+      background-color: var(--theme);
+    }
+  }
+}

@@ -1,0 +1,131 @@
+@php
+	$slider = get_photos('slide', $lang, ["order_by" => ["stt" => "asc"]])->toArray();
+	$slidemobile = get_photos('slidemobile', $lang, ["order_by" => ["stt" => "asc"]])->toArray();
+@endphp
+@desktop
+@isset($slider)
+<div class="relative z-10 flex-1 min-h-0 mt-auto slider-swiper">
+	{{-- lg:mt-auto lg:flex-1 lg:min-h-0 --}}
+	<div class="h-full group slider-swiper-box swiper">
+		{{-- lg:h-full --}}
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			@foreach ($slider as $key => $item)
+			@php
+				$sliderName = $item->{'ten'.$lang} ?? '';
+				$sliderDesc = $item->{'mota'.$lang} ?? '';
+				$sliderUrl = $item->link ?? '';
+				$sliderOptions = Helper::jsonDecode($item->sl_options);
+				$slogan = $sliderOptions["sloganvi"] ?? '';
+				$sliderPhoto = $item->photo;
+			@endphp
+			<div class="swiper-slide">
+				<div class="relative h-full slider-swiper-item">
+					<a href="{{ $sliderUrl }}" class="block h-full lg:aspect-w-6 lg:aspect-h-3">
+						{{-- aspect-w-6 aspect-h-3 --}}
+						<x-shared.image class="absolute z-10 object-cover w-full h-full" alt="{{ $sliderName }}" src="{{ Thumb::Crop(UPLOAD_PHOTO, $sliderPhoto, 1366, 670, 1, null, 'png') }}" />
+						{{-- lg:absolute  lg:h-full --}}
+						{{-- <div class="absolute top-0 left-0 z-20 flex items-center w-full h-full">
+							<div class="container max-w-[490px] text-center">
+								@if ($slogan)
+									<div class="mb-1 text-base font-extrabold text-white text-opacity-50 uppercase">{{ $slogan }}</div>
+								@endif
+								@isset($sliderName)
+									<p class="text-5xl font-extrabold text-white mb-9">{{ $sliderName }}</p>
+								@endisset
+								@isset($sliderDesc)
+									<p class="text-sm text-white mb-9 line-clamp-3 ">{{ $sliderDesc }}</p>
+								@endisset
+								@isset($sliderUrl)
+								<x-shared.readmore  >
+								</x-shared.readmore>
+								@endisset
+							</div>
+						</div> --}}
+					</a>
+				</div>
+			</div>
+			@endforeach
+		</div>
+		<!-- If we need pagination -->
+		<div class="swiper-pagination"></div>
+
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev [body_&]:bg-transparent [body_&]:text-transparent group-hover:!text-secondary"></div>
+		<div class="swiper-button-next [body_&]:bg-transparent [body_&]:text-transparent group-hover:!text-secondary"></div>
+	</div>
+</div>
+@endisset
+@elsedesktop
+@isset($slidemobile)
+<div class="relative z-10 flex-1 min-h-0 mt-auto slider-swiper">
+	{{-- lg:mt-auto lg:flex-1 lg:min-h-0 --}}
+	<div class="h-full group slider-swiper-box swiper">
+		{{-- lg:h-full --}}
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			@foreach ($slidemobile as $key => $item)
+			@php
+				$sliderName = $item->{'ten'.$lang};
+				$sliderDesc = $item->{'mota'.$lang};
+				$sliderUrl = $item->link;
+				$sliderPhoto = $item->photo;
+			@endphp
+			<div class="swiper-slide">
+				<div class="relative h-full slider-swiper-item">
+					<a href="{{ $sliderUrl }}" class="block h-full lg:aspect-w-3 lg:aspect-h-6">
+						{{-- aspect-w-6 aspect-h-3 --}}
+						<x-shared.image class="absolute z-10 object-cover w-full h-full" alt="{{ $sliderName }}" src="{{ Thumb::Crop(UPLOAD_PHOTO, $sliderPhoto, 600, 1200, 1, null, 'png') }}" />
+						{{-- lg:absolute  lg:h-full --}}
+						{{-- <div class="absolute top-0 left-0 z-20 flex items-center w-full h-full">
+							<div class="container max-w-screen-lg">
+								<div class="max-w-sm">
+									@isset($sliderName)
+										<p class="mb-2 text-sm font-bold text-white md:text-5xl md:mb-9">{{ $sliderName }}</p>
+									@endisset
+									@isset($sliderDesc)
+										<p class="mb-2 text-xs text-white line-clamp-4 md:text-base md:mb-9">{{ $sliderDesc }}</p>
+									@endisset
+									@isset($sliderUrl)
+									<x-shared.readmore >
+									</x-shared.readmore>
+									@endisset
+								</div>
+							</div>
+						</div> --}}
+					</a>
+				</div>
+			</div>
+			@endforeach
+		</div>
+		<!-- If we need pagination -->
+		<div class="swiper-pagination"></div>
+
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev [body_&]:bg-transparent [body_&]:text-transparent group-hover:!text-secondary"></div>
+		<div class="swiper-button-next [body_&]:bg-transparent [body_&]:text-transparent group-hover:!text-secondary"></div>
+	</div>
+</div>
+@endisset
+@enddesktop
+@push('js_page')
+<script>
+	$(document).ready(function(){
+		var slider_swiper_box = new Swiper(".slider-swiper-box", {
+			loop: true,
+			// If we need pagination
+			pagination: {
+				el: '.swiper-pagination',
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+	});
+</script>
+@endpush

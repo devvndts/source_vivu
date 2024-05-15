@@ -1,0 +1,95 @@
+@include render('style') {
+  .scrollstyle-4{
+    @include scrollbars(2px,$theme);
+  }
+  body {
+    // @include font-size(16, 16);
+    // font-family: var(--text-font);
+    // .aside{
+    //   float: left;
+    //   width: percentage(280/$max-width);
+    // }
+    // .main-container{
+    //   float: right;
+    //   width: percentage(895/$max-width);
+    // }
+    // @include media("<=medium"){
+    //   .aside{
+    //     display: none;
+    //   }
+    //   .main-container{
+    //     float: none;
+    //     width: 100%;
+    //   }
+    // }
+  }
+  .section{
+    // &:not(.pd-highlight):not(.servicehome)
+    // {
+      // padding: $gap 0;
+    // }
+  }
+
+  // .container {
+  //   max-width: $container-width * 1px;
+  //   position: relative;
+  // }
+  // .wrap-main{
+  //   @include z-index(share);
+  //   position: relative;
+  //   padding: 35px 0;
+  // }
+  // .wrap-main{
+  //   &.wrap-home{
+  //     padding: 0;
+  //   }
+  // }
+
+  // a:hover{
+  //   text-decoration: none;
+  // }
+  
+  // .slick-slider{
+  //   %p_slick_prev_next{
+  //     @include box(26px,40px,3px);
+  //     @include transition;
+  //     background-color: #eee;
+  //     padding-top: 4px; 
+  //     @include hover{
+  //       background-color: $theme;
+  //     }
+  //   }
+  //   %p_slick_p_el{
+  //     font-size: 24px;
+  //     color: #333;
+  //     @include hover{
+  //       color: #fff;
+  //     }
+  //   }
+  //   .slick-prev {
+  //     @extend %p_slick_prev_next;
+  //     left: 20px;
+  //     &::before{
+  //       @extend %p_slick_p_el;
+  //     }
+  //   }
+  //   .slick-next{
+  //     @extend %p_slick_prev_next;
+  //     right: 20px;
+  //     &::before{
+  //       @extend %p_slick_p_el;
+  //     }
+  //   }
+  // }
+  // .btn-frame {
+  //   i{background: var(--theme2);}
+  //   .kenit-alo-circle{
+  //     border: 2px solid var(--theme2-opc80-color);
+  //     background: var(--theme2);;
+  //   }
+  // }
+  // .js-facebook-messenger{
+  //   &-box{background: var(--theme2);;}
+  //   &-top-heade{background: var(--theme2);;}
+  // }
+}

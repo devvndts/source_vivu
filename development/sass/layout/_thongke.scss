@@ -1,0 +1,51 @@
+@include render('thongke') {
+  $template_thongke: thongke;
+  @if $template_thongke == thongke {
+    .thongke {
+      @extend %reset-list;
+      @include grid(flex, $flex-wrap: wrap, $justify-content: null, $align-items: null, $gutter: null);
+      position: relative;
+      margin-bottom: 0;
+      li {
+        @include setFont(13px, #fff, 400, null, 1);
+        @include grid(flex, $justify-content: space-between, $align-items: center);
+        position: relative;
+        margin-left: 20px;
+        @include doubly{
+          @include p-el(before, $el-width: 1px, $el-height: 12px){
+            background-color: #fff;
+            left: -10px; 
+          }
+        }
+
+        span{
+          // color: #ff0;
+        }
+      }
+    }
+  } @else if $template_thongke == thongke2 {
+    .thongke2 {
+      @extend %reset-list;
+      position: relative;
+      li {
+        @include setFont(14px, #fff, 400, null);
+        @include grid(flex, $justify-content: space-between, $align-items: center);
+        position: relative;
+        padding-left: 25px;
+        img{
+          @include absolute($left: 0px);
+        }
+        
+        span{
+          @include flex(1);
+          font-weight: 700;
+          text-align: right;
+        }
+
+        @include doubly{
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+    .counter{
+        @apply inline-flex flex-col items-center justify-center mr-8 text-xs text-black border-2 rounded-full w-14 h-14 border-primary text-opacity-70;
+    }
+    .counter b{
+        @apply text-2xl font-extrabold text-primary;
+    }
+
+    .counter2{
+        @apply inline-flex flex-col items-center justify-center text-xs text-black border-2 rounded-full lg:mr-8 w-14 h-14 border-primary text-opacity-70;
+    }
+    .counter2 b{
+        @apply text-2xl font-extrabold text-primary;
+    }

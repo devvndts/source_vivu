@@ -1,0 +1,85 @@
+@php
+	$slider = get_photos('slide', $lang, ["order_by" => ["stt" => "asc"]])->toArray();
+@endphp
+@isset($slider)
+<div class="relative z-10 slider-swiper">
+	{{-- lg:mt-auto lg:flex-1 lg:min-h-0 --}}
+	<div class=" /h-[80vh] /lg:h-auto hover:[&_.swiper-main-button-prev]:!text-secondary swiper-main swiper hover:[&_.swiper-main-button-next]:!text-secondary">
+		{{-- lg:h-full --}}
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			@foreach ($slider as $key => $item)
+			@php
+				$name = $item->{'ten'.$lang} ?? '';
+				// $desc = $item->{'mota'.$lang} ?? '';
+				$url = url($item->link ?? '');
+				// $sl_options = Helper::jsonDecode($item->sl_options);
+				// $slogan = $sl_options["sloganvi"] ?? '';
+				$img = $item->photo;
+			@endphp
+			<div class="swiper-slide">
+				<div class="relative h-full slider-swiper-item">
+					<a href="{{ $url }}" class="block h-full \aspect-w-6 \aspect-h-2">
+						{{-- aspect-w-6 aspect-h-3 --}}
+						<x-shared.image class="lg:relative w-full bottom-0 left-0 z-10 object-cover /h-full /lg:h-auto" alt="{{ $name }}" src="{{ Thumb::Crop(UPLOAD_PHOTO, $img, 1440, 550, 1, null, 'png') }}" />
+						{{-- lg:absolute  lg:h-full --}}
+						{{-- <div class="absolute top-0 left-0 z-20 flex items-center w-full h-full lg:w-1/2">
+							<div class="container max-w-[420px] lg:float-right mr-10">
+								<div class="mb-4 text-sm font-bold uppercase text-secondary">nob interlining</div>
+								@if ($slogan)
+									<div class="mb-4 text-sm font-bold uppercase text-secondary">{{ $slogan }}</div>
+								@endif
+								@isset($name)
+									<p class="mb-3 text-2xl font-bold text-white lg:text-6xl">{{ $name }}</p>
+								@endisset
+								@isset($desc)
+									<p class="mb-8 text-lg text-white lg:text-2xl line-clamp-1 ">{{ $desc }}</p>
+								@endisset
+								@isset($url)
+								<x-shared.readmore>
+									<x-slot name="icon"></x-slot>
+								</x-shared.readmore>
+								@endisset
+							</div>
+						</div> --}}
+					</a>
+				</div>
+			</div>
+			@endforeach
+		</div>
+		<!-- If we need pagination -->
+		{{-- <div class="absolute z-20 text-center swiper-main-pagination [&_.swiper-pagination-bullet]:bg-transparent [&_.swiper-pagination-bullet]:border [&_.swiper-pagination-bullet]:border-white [&_.swiper-pagination-bullet.swiper-pagination-bullet-active]:bg-white"></div> --}}
+
+		<!-- If we need navigation buttons -->
+		{{-- <div class="swiper-main-button-prev [body_&]:bg-transparent [body_&]:text-transparent "></div>
+		<div class="swiper-main-button-next [body_&]:bg-transparent [body_&]:text-transparent "></div> --}}
+
+		{{-- <div
+			class="absolute z-10 inline-flex items-center justify-center w-6 h-6 text-white rounded-full md:w-12 md:h-12 swiper-main-button-prev left-5 bottom-5 bg-white/50">
+			<i class=" fas fa-long-arrow-alt-left"></i></div>
+		<div
+			class="absolute z-10 inline-flex items-center justify-center w-6 h-6 text-white rounded-full md:w-12 md:h-12 swiper-main-button-next right-5 bottom-5 bg-white/50">
+			<i class=" fas fa-long-arrow-alt-right"></i></div> --}}
+	</div>
+</div>
+@endisset
+@push('js_page')
+<script>
+	$(document).ready(function(){
+		var swiper_main = new Swiper(".swiper-main", {
+			loop: true,
+			// If we need pagination
+			pagination: {
+				el: '.swiper-main-pagination',
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-main-button-next',
+				prevEl: '.swiper-main-button-prev',
+			},
+		});
+	});
+</script>
+@endpush

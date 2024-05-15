@@ -1,0 +1,1 @@
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render={{ config('recapcha.site_key_google') }}" async defer></script>

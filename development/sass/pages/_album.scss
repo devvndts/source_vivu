@@ -1,0 +1,30 @@
+@include render('album') {
+// @if index($import-pages, album) {
+  /* Album */
+  .album{
+    &-grid{
+      @include grid(flex, $flex-wrap: wrap, $justify-content: null, 
+        $align-items: null, $gutter: 2%);
+    }
+    @include e(item){
+      @include grid-col($col: 3, $grid-columns: 12, $gutter: 2%);
+
+    }
+    @include e(figure){}
+    @include e(img){
+      width: 100%;
+    }
+    @include e(name){
+      @include setFont(em(16), #000, 400, null);
+      text-align: center;
+    }
+    @include media("<=mobile"){
+      @include e(item){
+        @include grid-col($col: 6, $grid-columns: 12, $gutter: 2%);
+
+      }
+      @include e(name){}
+    }
+  }
+// }
+} 

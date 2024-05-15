@@ -1,0 +1,30 @@
+@include render('widget') {
+  .widget{
+    $this: &;
+    margin-bottom: 10px;
+    @include m(border){
+      #{$this}-body{
+        border-style: solid;
+        border-color: $theme;
+        border-width: 0 2px 2px;
+      }
+    }
+    @include m(bg){
+      #{$this}-body{
+        background-color: #eee;
+      }
+    }
+    &-head{
+      @include setFont(18px, #fff, 700, null);
+      @include grid(flex, $flex-wrap: wrap, $justify-content: center, 
+        $align-items: center, $gutter: null);
+      text-transform: uppercase;
+      background-color: $theme;
+      min-height: 60px;
+      i{
+        margin: 0 10px;
+      }
+    }
+    &-body{}
+  }
+}

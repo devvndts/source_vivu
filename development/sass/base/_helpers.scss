@@ -1,0 +1,228 @@
+@include render('helpers') {
+  // -----------------------------------------------------------------------------
+  // This file contains CSS helper classes.
+  // -----------------------------------------------------------------------------
+  %clearfix {
+    @include clearfix;
+  }
+  %img-fill {
+    @include absolute(0,0,0,0);
+    @include box(100%, 100%);
+    object-fit: fill;
+  }
+  %img-center {
+    @include absolute(0,0,0,0);
+    @include box(100%, 100%);
+    object-fit: scale-down;
+    object-position: center center;
+  }
+  %transition{
+    @include transition;
+  }
+  %bg-center {
+    background-size: contain;
+    background-position: center center;
+  }
+  %bg-full {
+    background-size: cover;
+    background-position: top center;
+  }
+  %pseudos {
+    content: '';
+    position: absolute;
+  }
+  %reset-list {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  %d-flex{
+    @include flexbox;
+  }
+  %d-inline-flex{
+    @include inline-flex;
+  }
+  %justify-content-between{
+    @include justify-content(space-between);
+  }
+  %justify-content-around{
+    @include justify-content(space-around);
+  }
+  %justify-content-center{
+    @include justify-content(center);
+  }
+  %justify-content-start{
+    @include justify-content(flex-start);
+  }
+  %justify-content-end{
+    @include justify-content(flex-end);
+  }
+  %align-items-between{
+    @include align-items(space-between);
+  }
+  %align-items-center{
+    @include align-items(center);
+  }
+  %align-items-end{
+    @include align-items(flex-end);
+  }
+  %align-items-start{
+    @include align-items(flex-start);
+  }
+  %flex-column{
+    @include flex-direction(column);
+  }
+  %flex-wrap{
+    @include flex-wrap(wrap);
+  }
+  %flex-nowrap{
+    @include flex-wrap(nowrap);
+  }
+
+  .reset-list{
+    @extend %reset-list;
+  }
+
+  [class^="hvr-"] {
+    margin: .4em;
+    padding: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    text-decoration: none;
+    color: #666;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .hvr-bob {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+
+  .hvr-bob:hover,
+  .hvr-bob:focus,
+  .hvr-bob:active {
+    -webkit-animation-name: hvr-bob-float,hvr-bob;
+    animation-name: hvr-bob-float,hvr-bob;
+    -webkit-animation-duration: .3s,1.5s;
+    animation-duration: .3s,1.5s;
+    -webkit-animation-delay: 0s,.3s;
+    animation-delay: 0s,.3s;
+    -webkit-animation-timing-function: ease-out,ease-in-out;
+    animation-timing-function: ease-out,ease-in-out;
+    -webkit-animation-iteration-count: 1,infinite;
+    animation-iteration-count: 1,infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-direction: normal,alternate;
+    animation-direction: normal,alternate;
+  }
+  .blink_me {
+    @include animation(blinker 1s linear infinite);
+  }
+  .shake_me {
+    @include animation(1s ease-in-out 0s normal none infinite running h-alo-ring-ring);
+  }
+  .hover_sang1 {
+      @include z-index(share);
+      @include absolute($left: 0px, $top: 0px);
+      @include transition(transform 0.6s);
+      @include transform(scale3d(2.2, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -120%, 0));
+      overflow: hidden;
+      border: 1px solid #e8e4e4;
+      box-shadow: 4px 6px 0 0 #f5f5f5;
+      background: rgba(255, 255, 255, 0.5);
+      @include p-el(before, $el-width: 100%, $el-height: 100%){
+      }
+      @include hover{
+          &::before{
+            @include transform(scale3d(2.2, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 120%, 0));
+          }
+      }
+    }
+  .hover_sang3 {
+      overflow: hidden;
+      position: relative;
+      @include hover{
+        &::before{
+          right: 50%;
+          left: 50%;
+          width: 0;
+          background: rgba(#fff, 0.5);
+        }
+        &::after{
+          height: 0;
+          top: 50%;
+          bottom: 50%;
+          background: rgba(#fff, 0.5);
+        }
+      }
+      @include p-el(before, $el-width: 100%, $el-height: 100%){
+        @include z-index(share-type);
+        @include transition( all 0.4s ease-in-out);
+        @include absolute($left: 0px, $top: 0px);
+      }
+      @include p-el(after, $el-width: 100%, $el-height: 100%){
+        @include z-index(share);
+        @include transition( all 0.4s ease-in-out);
+        @include absolute($left: 0px, $top: 0px);
+      }
+    }
+  .xoay_hinh {
+    overflow: hidden;
+    @include hover{
+      img {
+        transform: rotate(360deg);
+      }
+    }
+    img {
+      transition: all 1s ease 0s;
+    }
+  }
+  .marquee{
+    @include animation(marquee 10s linear infinite);
+  }
+  .text-theme{
+    color: var(--theme)!important;
+  }
+  .text-theme2{
+    color: var(--theme2)!important;
+  }
+  .bg-theme{
+    background-color: var(--theme)!important;
+  }
+  .overlay{
+    @include absolute($left: 0px, $top: 0px);
+    @include box(100%, 100%);
+    @include transition;
+    opacity: 0;
+    background-color: rgba(#000, .3);
+    @include e(box){
+      @include absolute($left: 30px, $top: 20px);
+      @include box(calc(100% - 60px), calc(100% - 40px));
+      border: 3px solid #fff;
+    }
+    @include e(content){}
+  }
+  .fixed{
+    @include animation(slideInDown 0.8s ease);
+  }
+  .fixed-shadow{
+    @include p-el(after, $el-width: null, $el-height: null){
+      @include absolute(0,0,0,0);
+      @include transition(opacity 0.3s);
+      @include z-index(below);
+      box-shadow: 0 0.0625em 0.5em rgba(0, 0, 0, 0.3);
+      opacity: 0;
+    }
+    &.fixed{
+      &::after{
+        opacity: 1;
+      }
+    }
+  }
+}

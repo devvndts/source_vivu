@@ -1,0 +1,367 @@
+.giohang_fix {
+  @include setFont(23px, #fff, 400, $font-text);;
+  display: inline-block;
+  padding: 0 7px;
+  position: relative;
+  span{
+    @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, 
+      $align-items: center, $gutter: null);
+    @include box(20px,20px,100%);
+    @include absolute($right: 0px, $top: 0px);
+    @include setFont(13px, #000, 400, $font-text);
+    background-color: #fff;
+  }
+}
+
+#giohang{
+  @include fixed($left: 0px, $top: 0px);
+  @include box(100%, 100%);
+  z-index: -1;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  font-family: $font-second;
+
+  &.active{
+    z-index: 999;
+    opacity: 1;
+    .w-giohang {
+      top: 0;
+    }
+  }
+
+  .w-giohang{
+    @include relative($top: -1000px);
+    @include transition(all 0.5s ease);
+    background: #fff;
+    width: 800px;
+    max-width: 100%;
+    margin: 50px auto;
+    border-radius: 5px;
+    max-height: 90%;
+    @include media("<=768px"){
+        max-width: 98%;
+    }
+    .giohang-cl{
+      @include absolute($right: -13px, $top: -13px);
+      cursor: pointer;
+
+      img{
+      }
+    }
+    .w-giohang-flex{
+      @include clearfix;
+
+      .giohang-left{
+        min-height: 200px;
+        padding: 15px 10px 15px 20px;
+        float: left;
+        width: 50%;
+        border-right: 1px solid #e3e3e3;
+        @include media("<=768px"){
+        float: none;
+        width: 100%;
+
+        }
+        &-tit{
+          font-size: 18px;
+          color: #06783d;
+          line-height: 20px;
+          text-indent: 20px;
+          position: relative;
+          @include p-el(before, $el-width: null, $el-height: null){
+            content: '\f00c';
+            font-weight:700;
+            font-family: $font-awesome;
+            @include absolute($left: -20px, $top: 0px);
+          };
+
+          span{
+          }
+        }
+        &-cont{
+          margin-top: 10px;
+          margin-left: -10px;
+
+          &-flex{
+            @include clearfix;
+
+            .giohang-left-img{
+              float: left;
+              max-width: 140px;
+              @include box(auto, auto);
+              a{
+                img{
+                }
+              }
+            }
+            .giohang-left-info{
+              margin-left: 140px;
+              padding-left: 10px;
+              padding-top: 10px;
+
+              .giohang-left-protit{
+                color: #666;
+                line-height: 18px;
+                margin-bottom: 10px;
+                font-size: 14px;
+              }
+
+              .giohang-left-promasp{
+                color: #646464;
+                line-height: 18px;
+                font-size: 13px;
+                margin-bottom: 5px;
+              }
+
+              .giohang-left-proprice{
+                font-size: 16px;
+                line-height: 18px;
+                color: #292929;
+                margin-bottom: 5px;
+                span{
+                  margin-right: 8px;
+                }
+              }
+            }
+          }
+        }
+      }
+      //giohang-right
+      .giohang-right{
+        min-height: 200px;
+        padding: 15px 20px 10px;
+        float: left;
+        width: 50%;
+        @include media("<=768px"){
+        float: none;
+        width: 100%;
+
+        }
+        &-tit{
+          font-size: 18px;
+          color: #292929;
+          line-height: 21px;
+          position: relative;
+
+          div{
+            font-size: 13px;
+            color: #292929;
+            display: inline-block;
+            margin-left: 2px;
+
+            span{
+            }
+          }
+
+          a{
+            font-size: 15px;
+
+            i{
+            }
+          }
+        }
+
+        &-tt{
+          display: flex;
+          margin-top: 10px;
+          justify-content: space-between;
+
+          div{
+            padding-bottom: 5px;
+            color: #666;
+            line-height: 16px;
+          }
+
+          .ghajax{
+          }
+        }
+
+        &-total{
+          padding-top: 10px;
+          border-top: 1px solid #e3e3e3;
+          color: #666;
+          margin-top: 10px;
+          display: flex;
+          justify-content: space-between;
+
+          div:not(.ghajax){
+            max-width: 150px;
+            line-height: 18px;
+
+            strong{
+              color: #292929;
+            }
+          }
+
+          .ghajax{
+            color: #292929;
+            font-size: 18px;
+          }
+        }
+
+        &-more{
+          margin-top: 15px;
+
+          .ttmh{
+            float: left;
+            width: 150px;
+            color: #199cb7;
+            line-height: 16px;
+            font-size: 14px;
+            padding: 11px 0px;
+
+            span{
+              cursor: pointer;
+
+              &:hover{
+                text-decoration: underline;
+              }
+            }
+          }
+
+          a:not(.ttmh){
+
+            .giohang-right-dathang{
+              float: left;
+              background: #f37021;
+              width: 205px;
+              text-align: center;
+              color: #fff;
+              font-size: 16px;
+              text-transform: uppercase;
+              padding: 7px 0px;
+              line-height: 24px;
+
+              &:hover{
+                background: #f00;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.gh_flex{
+  // @include flexbox;
+  // @include justify-content(space-between);
+
+  .td_gh {
+    font-size: 18px;
+    margin: 10px 0;
+    text-transform: uppercase;
+  }
+
+  .left_gh {
+    // @include flex(1);
+    // margin-right: 2em;
+    width: 100%;
+  }
+
+  .right_gh {
+    width: 39%;
+  }
+
+  .tbl_giohang {
+    text-align: center;
+    background: #f1f1f1;
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+    border-collapse: collapse;
+    padding: 1px;
+    
+    tr.dong_gh {
+      background: #fff;
+    }
+
+    td {
+      border: 1px solid #e2e2e2;
+
+      .mau{
+        display: block;
+        float: left;
+        border: 1px solid #DDD;
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+        cursor: pointer;
+        font-size: 0;
+        background-size: cover !important;
+      }
+
+      .img_gh {
+        height: 50px;
+      }
+
+      .xoa_gh {
+        cursor: pointer;
+        color: #000000;
+        font-size: 17px;
+
+        &:hover {
+          color: red;
+        }
+      }
+
+      .sl_gh {
+        text-align: center;
+        border: 1px solid #DDD;
+        padding: 3px 5px;
+        width: 60px;
+      }
+
+      &.tongtien_gh {
+        background: #F0F0F0;
+        text-align: right;
+        line-height: 50px;
+        padding-right: 20px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #000000;
+      }
+    }
+  }
+  @include media("<=768px"){
+    .left_gh {
+      overflow-x: auto;
+    }
+
+    .tbl_giohang {
+      white-space: nowrap!important;
+    }
+  }
+}
+
+.tieptuc {
+  padding: 10px 25px;
+  background: #ee0303;
+  border: none;
+  color: #fff;
+  margin: 10px 0px;
+  font-size: 13px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.click_ajax2 {
+  padding: 10px 25px;
+  background: #111111;
+  border: none;
+  color: #fff;
+  margin: 10px 0px;
+  font-size: 13px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+.coupon-form{
+  input{
+    @include flex(1);
+  }
+  .btn{
+
+  }
+}

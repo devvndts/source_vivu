@@ -1,0 +1,65 @@
+@include render('product-detail') {
+ 
+  .menu-product-detail {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      transition: all 0.5s;
+      z-index: 999;
+
+
+  }
+
+  .menu-product-detail span, .title-noidung-detail span {
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 5px 10px;
+      background-color: var(--theme);
+      color: #fff;
+      font: 15px var(--bold);
+      text-transform: uppercase;
+
+      
+  }
+
+  .menu-product-detail span:hover, .menu-product-detail span.active {
+      background: darken($theme, 10);
+  }
+
+  .fixed_detail {
+      // top: 44px !important;
+      top: 0 !important;
+  }
+
+  .title-noidung-detail {
+      margin-bottom: 20px;
+      border-bottom: 1px solid darken($theme, 10);
+  }
+  /*pddetail-container*/
+  .pddetail-container{
+    @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: null, $gutter: null);
+    margin-bottom: 15px;
+  }
+  .sec-pddetail{
+    @include m(left){
+      width: 58.75%;
+    }
+    @include m(right){
+      width: 38.75%;
+    }
+  }
+  .pddetail-box{
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 3px 0 #dee2e6;
+    box-shadow: 0 0 3px 0 #dee2e6;
+    border-radius: 6px;
+    padding: 15px 20px;
+    @include doubly{
+      margin-top: 15px;
+    }
+    @include e(header){
+
+    }
+  }
+}

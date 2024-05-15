@@ -1,0 +1,108 @@
+@include render('slider') {
+  .slider2-item{
+    @include e(box){
+      // @include grid( flex, $flex-wrap: nowrap, $justify-content: space-between,
+      // $align-items: null, $gutter: null);
+
+    }
+    a{
+      // width: percentage(calc(550 / $max));
+      img{}
+    }
+    @include e(info){
+      // margin-top: 130px;
+      // width: percentage(calc(350 / $max));
+      order: -1;
+      div{
+        span{
+          font-weight: 600;
+          // font-size: 14px;
+          color: #845536;
+        }
+      }
+      h5{
+        font-weight: 700;
+        // font-size: 32px;
+        a{
+          color: #101010;
+        }
+        // @include line-clamp($font-size: 32px, $line-height: 1.5, $lines-to-show: 3,
+        //                   $max-height: false);
+      }
+
+    }
+    p{
+      // margin-top: 320px;
+      // width: percentage(calc(320 / $max));
+      font-weight: 400;
+      // font-size: 14px;
+      color: #101010;
+      // @include line-clamp($font-size: 14px, $line-height: 1.5, $lines-to-show: 4,
+      //                     $max-height: false);
+    }
+  }
+  .slider{
+    position: relative;
+    &-image{
+      position: relative;
+      @include z-index(share);
+      &-swiper{
+
+      }
+      &-item{
+        figure{
+          margin-bottom: 0;
+          img{
+            width: 100%;
+            
+          }
+        }
+      }
+    }
+    &-content{
+      @include z-index(share-type);
+      // @include absolute($left: 0px, $top: 50%);
+      // @include translate(0,-50%);
+      // width: 100%;
+      &-swiper{
+        // background-color: rgba($color: #31302F, $alpha: .6);
+        // padding: 30px 20px;
+        h5{
+          // @include setFont(32px, #fff, 700, var(--title-font), null);
+        }
+        p{
+          // font-weight: 400;
+          // font-size: 20px;
+          // color: #F2F2F2;
+          // @include line-clamp($font-size: 20px, $line-height: 1.5, $lines-to-show: 2,
+          //                     $max-height: false);
+        }
+      }
+      .slider-pagination__fraction{
+        // width: auto;
+        // margin-right: 50px;
+      }
+    }
+    &-pagination{
+      @include absolute($left: 0px, $bottom: 1em);
+      @include z-index(share-type);
+      width: 100%;
+      text-align: center;
+      // font-weight: 400;
+      .swiper-pagination-bullet-active{
+        background-color: #fff;
+      }
+      // .swiper-pagination-current{
+      //   font-size: 36px;
+      //   color: #C09D77;
+      // }
+      // .swiper-pagination-total{
+      //   font-size: 14px;
+      //   color: #fff;
+      // }
+      // .swiper-custom-prev{
+      //   margin-right: 20px;
+      // }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.header-navigate{
+	background-color: $breadcrumb-bg;
+	margin-bottom: 20px;
+}
+.breadcrumb {
+	background-color: $breadcrumb-bg;
+	padding: 8px 0;
+	margin-bottom: 0;
+	&.breadcrumb-arrow{
+		.breadcrumb-item{
+			@include setFont(em(15), #1f2022, 400);
+			@include setTagAHover(#1f2022, #25aef5);
+			a{
+				@include setFont(em(15), #1f2022, 400);
+			}
+			&.active {
+			  color: #707070;
+			}
+		}
+	}
+}

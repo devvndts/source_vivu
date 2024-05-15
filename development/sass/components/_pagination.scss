@@ -1,0 +1,96 @@
+/*----------Phan trang-------------*/
+.pagination {
+  @include justify-content(center);
+
+  ul.pages {
+    @extend %reset-list;
+    @include grid(flex, $flex-wrap: wrap, $justify-content:center, $align-items:center, $gutter:null);
+
+    li {
+      margin-bottom: 2px;
+
+      a {
+        @include setFont(11px, #666, 700, $font-second);
+        padding: 7px 10px;
+        text-decoration: none;
+        border: 1px solid #d5d5d5;
+        background: #fff;
+        display: block;
+
+        @include on-event() {
+          background: #f6f6f6;
+        }
+        &.active {
+          background: #424852;
+          color: #fff;
+          border-color: #424852;
+
+          &:hover {
+            background: #2a313d;
+          }
+        }
+      }
+      &:only-child, &:empty {
+        display: none;
+      }
+      &.prev {
+        margin-right: 15px;
+      }
+      &.next {
+        margin-left: 15px;
+      }
+      @include doubly() {
+        margin-left: 2px;
+      }
+    }
+  }
+}
+
+/*----------Phan trang-------------*/
+
+/*----------Phan trang ajax-------------*/
+
+.pagination {
+  @include justify-content(center);
+
+  ul.pages_ajax {
+    @extend %reset-list;
+    @include grid(flex, $flex-wrap: wrap, $justify-content:center, $align-items:center, $gutter:null);
+
+    li {
+      margin-bottom: 2px;
+      @include setFont(11px, #666, 700, $font-second);
+      padding: 7px 10px;
+      text-decoration: none;
+      border: 1px solid #d5d5d5;
+      background: #fff;
+      display: block;
+      cursor: pointer;
+      @include on-event() {
+        background: #f6f6f6;
+      }
+      a {
+        color: #666;
+      }
+      &.actived {
+        background: #424852;
+        color: #fff;
+        border-color: #424852;
+        a{
+          color: #fff;
+        }
+        &:hover {
+          background: #2a313d;
+        }
+      }
+      @include doubly() {
+        margin-left: 2px;
+      }
+    }
+   
+  }
+}
+span.total {
+   display: none;
+}
+/*----------Phan trang ajax-------------*/

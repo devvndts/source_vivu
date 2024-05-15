@@ -1,0 +1,26 @@
+@include render('doitac') {
+.partner {
+    padding-bottom: 50px;
+    &-slick {
+        // margin: 0 -1em;
+        .slick-prev{
+            // left: 20px;
+        }
+        .slick-next{
+            // right: 20px;
+        }
+    }
+    @include e(item){
+        // padding: 0 1em;
+        padding: 1px;
+    }
+    @include e(link){
+        @include aspect-ratio(200,150 );
+        border: 1px solid #b7b7b7;
+        display: block;
+    }
+    @include e(img){
+        @extend %img-center;
+    }
+}
+}

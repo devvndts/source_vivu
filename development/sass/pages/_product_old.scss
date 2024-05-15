@@ -1,0 +1,451 @@
+%hover-box-mau {
+  border: 1px solid #EE0000 !important;
+}
+%size-style {
+  @include setFont(16px, #333, 600);
+  text-transform: uppercase;
+}
+%gia-style {
+  @include setFont(20px, #f00, 700);
+  position: relative;
+}
+
+.product-grid {
+  @include grid($display: flex, $flex-wrap:wrap, $gutter:$product-gutter);
+}
+.slick-box-item {
+  padding: 0 10px;
+}
+.spnoibat-main {
+  margin: 0 -10px;
+}
+.product-item{
+  $this: &;
+  @include grid-col($col: 3, $grid-columns:12, $gutter:$product-gutter);
+  @include e("box"){
+    // @include boxShadow(0 0 4px rgba(0,0,0,.1));
+    color: #000;
+    position: relative;
+    height: 100%;
+  }
+  @include e("image"){
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    &-url{
+      display: block;
+      overflow: hidden;
+      position: relative;
+      // padding-top: $product-ratio;
+    }
+  }
+  @include e("img"){
+    // @extend %img-fill;
+    // object-fit: contain;
+    // object-position: center center;
+    width: 100%;
+  }
+  @include e("info"){
+  }
+  @include e("name"){
+    @include setFont(em(14), inherit, 500, $text-font);
+    margin-bottom: 0;
+    position: relative;
+    text-transform: uppercase;
+    line-height: 1.5;
+    &-url{
+      @include transition;
+      display: block;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+  @include e(desc){
+    @include setFont(13px, #a0a0a0, 400, null);
+    @include line-clamp($font-size: 13px, $line-height: 1.5, $lines-to-show: 3, $max-height: false);
+    margin: 10px 0;
+  }
+  @include e(giachu){
+    @include absolute($right: 0px, $bottom: 0px);
+    @include setFont(14px, #fff, 700, null);
+    @include z-index(share);
+    background-color: #e31212;
+    padding: 4px 10px;
+    strong{
+      color: #ff0;
+    }
+  }
+  @include e(text){
+    @include grid(flex, $flex-wrap: wrap, $justify-content: null, 
+      $align-items: center, $gutter: null);
+    @include setFont(13px, inherit, 400, null);
+    margin-bottom: 5px;
+    i{
+      font-size: 18px;
+      color: #a0a0a0;
+      width: 30px;
+    }
+  }
+  @include e("price"){
+    @include grid(flex, $flex-wrap: wrap, $justify-content: null, 
+      $align-items: flex-end, $gutter: null);
+    @include setFont(15px, $theme2, 700, $text-font);
+    margin: 5px 0 10px;
+    line-height: 1;
+    // position: relative;
+    i {
+      // @include setFont(9px, #fff, 700, $font-awesome);
+      // @include box(16px,16px);
+      // @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, 
+      //   $align-items: center, $gutter: null);
+      // background-color: #cdcfd0;
+    }
+    strong {
+      // margin: 0 5px;
+    }
+    span {
+      font-weight: 700;
+      display: inline-block;
+      line-height: 1;
+      // margin: 0 5px;
+      color: $theme2;
+    }
+    del{
+      margin-left: 10px;
+      display: inline-block;
+      line-height: 1;
+    }
+  }
+  @include e(contact){
+    @include setFont(12px, #3b3b3b, 400, null);
+    display: inline-block;
+    text-transform: uppercase;
+    background-color: #ebebeb;
+    padding: 4px 14px;
+  }
+  .muangay{
+    // @include setFont(13px, #333, 400, $text-font);
+    // @include transition(all 0.2s ease);
+    // background-color: #ececec;
+    // display: block;
+    // text-transform: uppercase;
+    // text-align: center;
+    // line-height: 30px;
+    // border: 1px solid #cacaca;
+    // &:hover{
+    //     border-color: $theme2-color;
+    //     background-color: $theme2-color;
+    //     color: #fff;
+    // }
+  }
+  @include hover{
+    #{$this}__name{
+      &-url{
+        color: $theme;
+      }
+    }
+  }
+  @include when-inside('.slick-box-item') {
+    @include flex(unset);
+    margin: 0;
+    width: 100%;
+  }
+}
+
+/*end san pham*/
+div.wap_pro {
+  @include grid($display: flex, $justify-content: space-between);
+}
+.zoom_slick {
+  width: 47%;
+}
+.pr__detail--verticle .product_info {
+  width: 47%;
+}
+.pr__detail--verticle .zoom_slick {
+  width: 50%;
+}
+.pr__detail--verticle .zoom-container {
+  @include grid(flex, $flex-direction: row-reverse, $justify-content: space-between);
+}
+.pr__detail--verticle .zoom_slick .slick2 {
+  width: 85%;
+}
+.pr__detail--verticle .zoom_slick .slick {
+  width: 13%;
+  margin-top: 0;
+}
+.zoom_slick .slick2 {
+  border: 1px solid #DDD;
+}
+.zoom_slick .slick {
+  margin-top: 5px;
+    img {
+      width: 95%;
+      margin: auto;
+      border: 1px solid #DDD;
+      box-sizing: border-box;
+      cursor: pointer;
+      object-fit: cover;
+
+      &:hover {
+        @include transition(all 1s ease);
+        border: 1px solid #F60;
+        opacity: 0.5;
+      }
+    }
+}
+
+.xemgiohang {
+  @include box(120px, 30px);
+  @include setFont(15px, #E80019, 700);
+  @include transition(all 0.4s ease);
+  display: block;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 7px auto 0;
+}
+.product_info {
+  width: 50%;
+
+  .li {
+    font-size: 16px;
+    padding: 3px 0;
+    &.ten {
+      @include setFont(1.2em, #000, 700);
+    }
+    &.gia {
+      @extend %gia-style;
+    }
+    &.giakm {
+      @include grid(flex, $flex-wrap: wrap);
+      @extend %gia-style;
+
+      & .tinh_phantram {
+        @include box(35px, 35px, 50%);
+        @include setFont(12px, #fff);
+        background: red;
+        display: block;
+        line-height: 35px;
+        text-align: center;
+        margin-left: 1em;
+      }
+    }
+    &.giacu {
+      text-decoration: line-through;
+      @include setFont(1em, #222, 400);
+    }
+    b {
+      font-size: 14px;
+      margin-right: 3px;
+    }
+    .add_to_cart {
+      @include setFont(14px, #fff);
+      @include transition(all 0.4s ease);
+      background: #0c0cdc;
+      display: block;
+      max-width: 300px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      i {
+        margin-right: 10px;
+        margin-top: 3px;
+        font-size: 19px;
+      }
+      &:hover {
+        color: #fff;
+        background: #f00;
+      }
+    }
+    span.size {
+      display: inline-block;
+      padding: 2px 10px;
+      border: 1px solid #DDD;
+      border-radius: 3px;
+      margin-right: 5px;
+      cursor: pointer;
+
+      &:hover {
+        @extend %hover-box-mau;
+      }
+    }
+    span.mausac {
+      @include box(30px, 30px);
+      display: block;
+      float: left;
+      border: 1px solid #DDD;
+      margin-right: 5px;
+      cursor: pointer;
+      font-size: 0;
+      background-size: cover !important;
+
+      &:hover {
+        @extend %hover-box-mau;
+      }
+    }
+    span.active_size {
+      @extend %hover-box-mau;
+    }
+    span.active_mausac {
+      @extend %hover-box-mau;
+    }
+    input.soluong {
+      padding: 3px 0;
+      width: 55px;
+      border: 1px solid #dedede;
+      text-align: center;
+    }
+  }
+}
+.pr-quickview {
+    width: 80%;
+}
+.box_detail_product {
+  @include boxShadow(0rem 0.5rem 1rem rgba(0, 0, 0, .2));
+  padding: 1rem;
+  border: 1px solid #eee;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+}
+
+/** css loc san pham **/
+div.box-tim-nc{
+    .item-nc {
+      list-style: none;
+      margin: 0 0 30px 0;
+      position: relative;
+    }
+} 
+div.box-tim-nc .item-nc:nth-child(5n) {
+  margin-right: 0px;
+}
+.boxsectionloc {
+    h2 {
+      @include setFont(16px, inherit, 400);
+      text-transform: uppercase;
+      box-sizing: border-box;
+      padding: 5px 10px 5px 0px;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 14px;
+    }
+}
+.boxfilter {
+  @include transition(all 0.3s ease);
+  display: block;
+  width: 100%;    
+  box-sizing: border-box;
+}
+.boxfilter .itemfilter {
+  line-height: 18px;
+  margin: 6px 0 6px 0px;
+  cursor: pointer;
+  display: block;
+  padding: 4px 0;
+}
+.boxfilter .checkboxfilter {
+  @include box(16px,16px,4px);
+  @include flexbox;
+  border: 1px solid #b9b8b8;
+  overflow: hidden;
+  position: relative;
+  margin-right: 8px;
+  cursor: pointer;
+  background: #FFF;
+  float: left;
+  margin-top: 2px;
+}
+.boxfilter img {
+  max-width: 42px !important;
+  max-height: 17px !important;
+}
+.boxfilter .itemfilter.checked .checkboxfilter {
+  background: #4a90e2;
+  border-color: #4a90e2;
+}
+.boxfilter .checkboxfilter i {
+  margin: auto;
+  color: #fff;
+}
+.boxfilter p {
+  display: inline-block;
+  font-size: 13px;
+}
+.boxfilter .click_xo {
+  @include absolute($right: 5px, $top: 7px);
+  display: none;
+  width: 20px;
+  text-align: right;
+  cursor: pointer;
+}
+.boxfilter .click_xo i {
+  font-size: 15px;
+  color: #1c185c;
+}
+.boxfilter .click_xo:hover i {
+  color: #f00;
+}
+.act-fil {
+  height: auto;
+}
+#wap_tags {
+  padding: 9px 0;
+}
+#wap_tags span {
+  @include setFont(12px, #fff, 700);
+  @include box(auto, 22px, 4px);
+  display: inline-block;
+  vertical-align: text-bottom;
+  line-height: 22px;
+  padding: 0 0 0 5px !important;
+  background: #4a90e2;
+  position: relative;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+#wap_tags span:after {
+  @include box(22px, 22px);
+  content: '';
+  float: right;
+  border-radius: 0 4px 4px 0;
+  background: #206bc1;
+  margin-left: 5px;
+}
+#wap_tags span:before {
+  @include absolute($right: 6px);
+  content: '\f00d';
+  font-family: $font-awesome;
+}
+#wap_tags span.delall {
+  background: #c10016;
+}
+#wap_tags span.delall:after {
+  background: #980617;
+}
+
+/** css loc san pham **/
+.muangay.nutdathang, a.dathang.nutdathang {
+  @include grid(inline-flex, $justify-content: center);
+  @include setFont(16px, #fff !important, 700);
+  @include transition;
+  width: 49%;
+  text-transform: uppercase;
+  background-color: $theme;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  @include hover{
+    background-color: darken($theme, 10);
+  }
+}
+.product-other__title{
+  @include setFont(20px, #000, 400, $text-font);
+  margin-bottom: 1em;
+  text-align: center;
+}

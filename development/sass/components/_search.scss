@@ -1,0 +1,146 @@
+@include render('search') {
+  $template_search: search-bar;//search-bar, search-icon
+  $icon-search: false;
+  .search {
+    @if $icon-search { 
+      .icon-search{
+        @include z-index(navigation);
+        @include box(34px, 34px, 100%);
+        @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, $align-items: center, $gutter: null);
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid transparent;
+        position: relative;
+        order: 1;
+        margin-bottom: 0;
+        &.active{
+          background-color: var(--theme);
+          color: #fff;
+          i{
+            color: #fff;
+          }
+        }
+        i{
+          color: #fff;
+          font-size: 17px;
+        }
+      }
+    }
+    .search-grid{
+      @include grid(flex, $flex-wrap: nowrap, $justify-content: space-between, $align-items: null, $gutter: null);
+      // @include box(100%, null, 22px);
+      // @include bg("search.png",$background-repeat: no-repeat,$background-size: cover,$background-position: 0 0);
+      // @include absolute($right: 34px, $top: 100%); 
+      // opacity: 0;
+      overflow: hidden;
+      background-color: transparent;
+      border: 1px solid transparent;
+      // max-width: 570px;
+      input{
+        @include box(calc(100% - 34px), 34px, null);
+        @include setFont(14px, #fff, 300, null);
+        // @include flex(1);
+        border: 0;
+        line-height: 34px;
+        outline: none;
+        background-color: transparent;
+        padding-left: 10px;
+        // margin-right: 5px;
+        @include placeholder(rgba(#fff, .7));
+      }
+      p{
+        @include setFont(16px, #fff, null, null, 34px); 
+        @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, $align-items: center, $gutter: null);
+        @include box(34px,34px);
+        // mix-blend-mode: unset;
+        margin: 0;
+        cursor: pointer;
+        i{
+          // margin-right: 5px;
+        }
+      }
+    }
+  }
+  
+  @if $template_search == search-bar {
+    .search {
+      @include box(100%, null);
+      @include absolute($left: 0px);
+      max-width: 200px;
+    }
+  } @else if $template_search == search-icon {
+    .search {
+      overflow: hidden;
+      margin-left: 10px;
+    }
+  }
+
+
+  $template_search: search-icon;//search-bar, search-icon
+  $icon-search: true;
+  .search2 {
+    @if $icon-search { 
+      .icon-search{
+        @include z-index(navigation);
+        @include box(34px, 34px, 100%);
+        @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, $align-items: center, $gutter: null);
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid transparent;
+        position: relative;
+        order: 1;
+        margin-bottom: 0;
+        &.active{
+          background-color: var(--theme);
+          color: #fff;
+          i{
+            color: #fff;
+          }
+        }
+        i{
+          color: var(--theme);
+          font-size: 17px;
+        }
+      }
+    }
+    .search-grid{
+      @include grid(flex, $flex-wrap: nowrap, $justify-content: space-between, $align-items: null, $gutter: null);
+      // @include box(100%, null, 22px);
+      // @include bg("search.png",$background-repeat: no-repeat,$background-size: cover,$background-position: 0 0);
+      @include absolute($right: 0px, $top: calc(100% + 10px)); 
+      opacity: 0;
+      overflow: hidden;
+      background-color: var(--theme);
+      border: 1px solid transparent;
+      // max-width: 570px;
+      input{
+        @include box(calc(100% - 34px), 34px, null);
+        @include setFont(14px, #fff, 300, null);
+        // @include flex(1);
+        border: 0;
+        line-height: 34px;
+        outline: none;
+        background-color: transparent;
+        padding-left: 10px;
+        // margin-right: 5px;
+        @include placeholder(rgba(#fff, .7));
+      }
+      p{
+        @include setFont(16px, #fff, null, null, 34px); 
+        @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, $align-items: center, $gutter: null);
+        @include box(34px,34px);
+        // mix-blend-mode: unset;
+        margin: 0;
+        cursor: pointer;
+        i{
+          // margin-right: 5px;
+        }
+      }
+    }
+  }
+  
+  .search2 {
+    position: relative;
+  }
+
+}

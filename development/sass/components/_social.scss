@@ -1,0 +1,72 @@
+@include render('social') {
+  .social{
+    $this: &;
+    @extend %reset-list;
+    @include grid($display: flex, $flex-wrap: wrap, $align-items: null, $justify-content: null, $flex-direction: null);
+    // @include fixed($right: 20px, $top: 40%, $bottom: 0);
+    @include absolute($right: 0px);
+    @include z-index(navigation);
+    span{
+      // @include setFont(13px, #fff, 400, null, null);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+      width: 100%;
+      // text-transform: uppercase;
+    }
+    a{
+      @include grid(inline-flex, $flex-wrap: wrap, $align-items: center, $justify-content: center);
+      // border: 1px solid #fff;
+      img{
+        @include transition(all 1s ease);  
+        max-height: 20px;
+        object-fit: scale-down;
+        @include hover{
+          @include rotate(360deg);
+        }
+      }
+      @include doubly(){
+        margin-left: 20px;
+      }
+    }
+    @include m(floating){
+      // @include grid($display: flex, $flex-wrap: wrap, $align-items: center, $flex-direction: column);
+      // @include fixed($right: 15px, $top: 50%);
+      // @include translate(0, -50%);
+      // @include z-index(footer);
+      // margin-top: 0;
+      // a{
+      //   @include box(58px,58px);
+      //   img{
+      //     max-height: 58px;
+      //     @include hover{
+      //       @include rotate(360deg);
+      //     }
+      //   }
+      //   @include doubly(){
+      //     margin-left: 0;
+      //   }
+      // }
+    }
+    @include m(ft){
+      // @include grid($display: flex, $flex-wrap: wrap, $align-items: center, $justify-content: flex-start);
+      // margin-top: 0;
+      // span{
+      // }
+      a{
+        // margin-left: 0;
+        // margin-right: 10px;
+        img{
+          // max-height: 50px;
+        }
+        @include hover{
+        }
+        @include doubly(){
+          
+        }
+      }
+    }
+  }
+}

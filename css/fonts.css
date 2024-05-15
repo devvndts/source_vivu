@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/QuicksandMedium.woff2') format('woff2'),
+        url('../fonts/QuicksandMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/QuicksandBold.woff2') format('woff2'),
+        url('../fonts/QuicksandBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/QuicksandLight.woff2') format('woff2'),
+        url('../fonts/QuicksandLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/QuicksandRegular.woff2') format('woff2'),
+        url('../fonts/QuicksandRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/QuicksandSemiBold.woff2') format('woff2'),
+        url('../fonts/QuicksandSemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SFUFutura';
+    src: url('../fonts/SFUFutura.woff2') format('woff2'),
+        url('../fonts/SFUFutura.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/RobotoMedium.woff2') format('woff2'),
+        url('../fonts/RobotoMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/RobotoBold.woff2') format('woff2'),
+        url('../fonts/RobotoBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/RobotoLight.woff2') format('woff2'),
+        url('../fonts/RobotoLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/RobotoRegular.woff2') format('woff2'),
+        url('../fonts/RobotoRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

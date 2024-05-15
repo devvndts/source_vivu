@@ -1,0 +1,68 @@
+@php
+	$slider = get_photos('slide', $lang, ["order_by" => ["stt" => "asc"]])->toArray();
+@endphp
+@isset($slider)
+<div >
+	<div class=" relative ">
+		{{-- <img src="img/slide-icon.png" alt="" class="absolute top-0 right-0 hidden lg:inline-block"> --}}
+		<div class="swiper slider-swiper">
+			<div class="swiper-wrapper">
+				@foreach ($slider as $item)
+					@php
+						$name = $item->{"ten$lang"};
+						$desc = $item->{"mota$lang"};
+						$photoUrl = $item->photo;
+						$photo = Thumb::Crop(UPLOAD_PHOTO, $photoUrl ?? '', 1440, 730, 1);
+						$url = $item->link;
+					@endphp
+					<div class="swiper-slide">
+						<a class="relative " target="_blank" href="{{ $url }}">
+							<x-shared.image src="{{ $photo }}" alt="{{ $name }}" class="w-full " style="max-height: 700px;" />
+							<div class="absolute top-0 right-0 bottom-0 left-0 z-20 flex items-center">
+								<div class="container">
+									<div class="font-title text-xl md:text-3xl xl:text-6xl text-white uppercase">{{ $name }}</div>
+									<div class="my-3 font-title text-xl md:text-3xl xl:text-6xl text-primary uppercase">{{ $desc }}</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				@endforeach
+			</div>
+			<div class="absolute left-0 bottom-6 w-full z-20 flex justify-center gap-3 ">
+                <div class="swiper-main-button-prev w-[33px] h-[33px] rounded-full border border-white text-white flex justify-center items-center transition-all duration-300 ease-in-out hover:border-primary hover:text-primary">
+                    <span class="material-icons">
+                    chevron_left
+                    </span>
+                </div>
+                <div class="swiper-main-button-next w-[33px] h-[33px] rounded-full border border-white transition-all duration-300 ease-in-out hover:border-primary hover:text-primary text-white flex justify-center items-center"><span class="material-icons">
+                    chevron_right
+                    </span></div>
+            </div>
+			<div class="absolute bottom-4 !w-auto !left-20 z-20 swiper-main-pagination"></div>
+		</div>
+	</div>
+</div>
+@endisset
+@push('js_page')
+<script>
+	$(document).ready(function(){
+		var swiper_main = new Swiper(".slider-swiper", {
+			loop: true,
+			autoplay: JS_AUTOPLAY && {
+				delay: 5000,
+			},
+			// If we need pagination
+			pagination: {
+				el: '.swiper-main-pagination',
+				clickable: true
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.swiper-main-button-next',
+				prevEl: '.swiper-main-button-prev',
+			},
+		});
+	});
+</script>
+@endpush

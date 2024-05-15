@@ -1,0 +1,20 @@
+@include render('giohang') {
+// @if index($import-pages, giohang) {
+  .cart-btn{
+    @include setFont(16px, #333, 700, null);
+    position: relative;
+    display: block;
+    i{ 
+      margin-right: 20px;
+    }
+    @include e(number){
+      @include grid(flex, $flex-wrap: wrap, $justify-content: center, 
+        $align-items: center, $gutter: null);
+      @include setFont(15px, #fff, 400, null);
+      @include box(20px,20px,100%);
+      @include absolute($right: 0px, $top: -10px);
+      background-color: #fe0000;
+    }
+  }
+// }
+}

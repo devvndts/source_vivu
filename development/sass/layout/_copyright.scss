@@ -1,0 +1,26 @@
+@include render('copyright') {
+  .copyright{
+    @include z-index(share-type);
+    // background-color: var(--copyright-bg);
+    background-color: var(--footer-bg);
+    border-top: 1px solid #101010;
+    position: relative;
+    &-wrap{ 
+      @include grid(flex, $flex-wrap: wrap, $justify-content: center, $align-items: center, $flex-direction: null);
+      min-height: 65px;
+      // border-top: 1px dashed #afafaf;
+      width: 100%;
+      position: relative;
+    }
+    @include e("text"){
+      font-size: 18px;
+      text-align: center;
+      color: #333333;
+      span{
+        font-weight: 700;
+        text-transform: uppercase;
+        // display: inline-block;
+      }
+    }
+  }
+}

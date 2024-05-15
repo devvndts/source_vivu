@@ -1,0 +1,57 @@
+#add_nhacungcap .card-title{font-size: 1rem;font-weight: bold;margin: 0;float: left;font-family: 'Verdana';}
+#add_nhacungcap .submit-check{background-color: #F4C142;}
+#add_nhacungcap .btn-reset{background-color: #ebebeb;}
+#add_nhacungcap .card-footer{background-color: #fafafa;box-shadow: 0px 3px 5px #ccc;}
+#add_nhacungcap .form-group label{font-weight: bold;font-family: sans-serif; font-size: 13px;}
+#add_nhacungcap .card{margin-bottom: 30px;}
+#add_nhacungcap .btn-upload{background: #F4C142;border-radius: 5px;padding: 5px 12px;cursor: pointer; color: #000;text-align: center;margin-top: 8px;}
+#add_nhacungcap .jFiler-input-dragDrop{width: 100%;}
+/* Photo upload zone */
+#add_nhacungcap .photoUpload-zone .photoUpload-detail{text-align:center;display:block;margin-bottom:1.5rem;}
+#add_nhacungcap .photoUpload-zone .photoUpload-detail img{max-width:100%;max-height:250px;display: inline-block;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file{cursor:pointer;background-color:#fbf5e7;outline:2px dashed #f7e5bb;outline-offset:0px;padding:2rem 0.75rem;margin-bottom:1rem;border-radius:0.25rem;font-weight:normal!important;display:-webkit-flex;display:-moz-flex;display:-ms-flex;display:-o-flex;display:flex;flex-direction:column;align-items:center;justify-content:center;-webkit-transition:outline-offset .15s ease-in-out,background-color .15s linear;transition:outline-offset .15s ease-in-out,background-color .15s linear;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file.drag-over{outline-offset:-10px;background-color:#fff9f9;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file input{display:none;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file i:hover{opacity:0.9;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file i{color:#6C7D8F;font-size:55px;margin-bottom:0.75rem;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file p{margin:0;color:#767978;font-size:16px;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file .photoUpload-drop{margin-bottom:0.5rem;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file .photoUpload-or{font-size:14px;margin-bottom:0.75rem;}
+#add_nhacungcap .photoUpload-zone .photoUpload-file .photoUpload-choose{color:#fff;}
+#add_nhacungcap .photoUpload-zone .photoUpload-dimension{font-weight:700;}
+
+#add_nhacungcap .jFiler-input-dragDrop{background-color:#fbf5e7;outline:2px dashed #f7e5bb;}
+#add_nhacungcap .jFiler-input-choose-btn.blue{border: 1 px solid #F4C142 !important; background: #F4C142; color: #fff !important;}
+
+/* Filer */
+#add_nhacungcap .label-filer-gallery{word-break:break-word;}
+#add_nhacungcap .alert-sort-filer{display:none;}
+#add_nhacungcap .jFiler-input-dragDrop{width:100%;}
+#add_nhacungcap .jFiler-items-grid.row{margin-left:-7.5px;}
+#add_nhacungcap .jFiler-items-grid.scroll-bar{max-height:560px;overflow-x:hidden;overflow-y:scroll;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container{margin:0px;margin-bottom:1rem;padding:5px;box-shadow:none;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-assets{margin-top:0px;padding:5px 0px;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-assets .pull-left{float:none;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-assets .pull-left li{display:block;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-assets .pull-left li .jFiler-jProgressBar{width:100%;margin:0px;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-assets .pull-left li .jFiler-jProgressBar .bar{float:none;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-assets .pull-right{float:none;text-align:center;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb{width:100%;height:auto;min-height:inherit;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb .jFiler-item-thumb-image{max-height:150px;position:relative;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb .jFiler-item-thumb-image img{max-width:100%;width:100%;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb .jFiler-item-thumb-image i{position:absolute;top:calc(50% - 25px/2);left:calc(50% - 25px/2);color:#ffc107;width:25px;height:25px;font-size:25px;text-align:center;line-height:25px;display:none;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb .jFiler-item-info{padding:0px 5px;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-thumb .jFiler-item-info .jFiler-item-title,.jFiler-items-grid .jFiler-item .jFiler-item-container .jFiler-item-info .jFiler-item-title b{font-weight:normal;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.moved{cursor:pointer;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.moved.ghostclass .jFiler-item-container{background:#fddf83;opacity:0.85;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.selected .jFiler-item-container{border-color:#ffc107;opacity:0.85;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.selected .jFiler-item-container:before{content:"";position:absolute;width:35px;height:35px;z-index:1;background-color:#ffc107;top:calc(50% - 35px/2);left:calc(50% - 35px/2);border-radius:100%;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.selected .jFiler-item-container:after{content:"";position:absolute;left:calc(50% - 9px/2);top:calc(50% - 25px/2);width:10px;height:20px;z-index:2;border:solid #fff;border-width:0 3px 3px 0;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.selected .jFiler-item-container .jFiler-item-inner{opacity:0.7;}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.moved:not(.selected) .jFiler-item-container .jFiler-item-thumb .jFiler-item-thumb-image img{-ms-filter:brightness(70%);-webkit-filter:brightness(70%);-moz-filter:brightness(70%);-o-filter:brightness(70%);filter:brightness(70%);}
+#add_nhacungcap .jFiler-items-grid .jFiler-item.my-jFiler-item.moved:not(.selected) .jFiler-item-container .jFiler-item-thumb .jFiler-item-thumb-image i{display:block;}
+#add_nhacungcap .check-all-filer{background: lightseagreen;}
+#add_nhacungcap .sort-filer{background: indianred;}
+#add_nhacungcap .delete-all-filer{background: darkslateblue;}
+
+#add_nhacungcap .select2-container {width: 100% !important;}

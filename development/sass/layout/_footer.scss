@@ -1,0 +1,102 @@
+@include render('footer') {
+  // -----------------------------------------------------------------------------
+  // This file contains all styles related to the footer of the site/application.
+  // -----------------------------------------------------------------------------
+  .footer{ 
+    @include z-index(default);
+    position: relative;
+    background-color: var(--footer-bg);
+    &-map{
+      @include aspect-ratio(222px,195px );
+      iframe{
+        @extend %img-fill;
+      }
+    }
+    &-bct{
+      @include grid( flex, $flex-wrap: wrap, $justify-content: null,
+                     $align-items: null, $gutter: null);
+      margin-top: 20px;
+      @include z-index(share-type);
+      &-item{
+        a{
+          img{
+            margin: 0 auto;
+            max-width: 110px;
+            @extend %transition;
+          }
+
+        }
+        @include doubly{
+          margin-left: 10px;
+        }
+      }
+    }
+    &-wrap{
+      @include grid( flex, $flex-wrap: wrap, $justify-content: space-between,
+                     $align-items: null, $gutter: null);
+      
+      padding: 50px 0;
+      // @include bg("red-bg.png",$background-repeat: repeat,$background-size: null,$background-position: 0 0);
+      position: relative; 
+    }
+    &-box{
+      // @extend .section;
+      padding: $gap 0;
+      @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: null, $flex-direction: null);
+    }
+    @include e("title"){
+      @include setFont(20px, #101010, 400, null, 1);
+      margin-bottom: 15px;
+    }
+    @include e("line"){
+      // @include box(30px, 1px);
+      // @include bg("ft-line.png",$background-repeat: no-repeat,$background-size: null,$background-position: 0 0,$background-color: null);
+      // border: 0;
+      // background-color: #fff;
+      // margin-left: 0;
+      margin: 0;
+      border-color: #7d7d7d;
+    }
+    @include e("info"){
+      width: percentage(calc(1/4));
+      position: relative;
+      &-body{
+        // @include setFont(14px, #000, 400, null, null);
+        // p{
+        //   margin-bottom: 5px;
+        // }
+      }
+    }
+    @include e("newsletter"){
+      width: percentage(calc(320/$max3));
+      position: relative;
+      text-align: center;
+
+      &-body{
+        // @include setFont(14px, #000, 400, null, null);
+        // p{
+        //   margin-bottom: 5px;
+        // }
+      }
+    }
+    @include e("info"){
+      width: percentage(calc(320 / $max3));
+    }
+    @include e("fanpage"){
+      // order: 3;
+      // width: percentage(380/$max);
+      // #fanpage-facebook{
+      //   max-height: 250px;
+      //   overflow: hidden;
+      // }
+    }
+  }
+  $codemaps: ("#footer-map": $map-height, ".codebando": $map-height);
+  @each $name, $value in $codemaps {
+    #{$name}, #{$name} iframe{
+      overflow: hidden;
+      width: 100%;
+      height: $value;
+    }
+  }
+}

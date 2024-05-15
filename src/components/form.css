@@ -1,0 +1,36 @@
+.form-label{
+        @apply
+        inline-block mb-2 text-gray-700;
+    }
+    .form-control{
+        @apply 
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+    }
+    .valid-feedback{
+        @apply hidden mt-2 text-sm text-blue-600 dark:text-blue-500;
+    }
+    .invalid-feedback{
+        @apply hidden mt-2 text-sm text-red-600 dark:text-red-500;
+    }
+    .was-validated .form-control:valid {
+        border-color: #28a745;
+    }
+    .was-validated .form-control:invalid {
+        border-color: #dc3545;
+    }
+    .was-validated .valid-feedback, .was-validated .form-control:invalid~.invalid-feedback{
+        @apply block;
+    }

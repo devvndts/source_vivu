@@ -1,0 +1,32 @@
+.inp { position: relative; margin: auto; width: 100%; border-radius: 3px;}
+.inp input, .inp select { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; border: 0; font-family: inherit; padding: 10px 12px 0 12px; height: 50px; font-size: 15px; font-weight: 400; color: #000; transition: all 0.15s ease; border: none;border-bottom: 1px solid #ebebeb; background: rgba(255,255,255,0.7);outline: none;}
+.inp input:not(:placeholder-shown) + .label, .inp select:not(:placeholder-shown) + .label, .inp textarea:not(:placeholder-shown) + .label { color: rgba(0, 0, 0, 0.5); transform: translate3d(0, -12px, 0) scale(0.75); top: 3px; font-size: 16px; }
+.inp .focus-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.05); z-index: -1; transform: scaleX(0); transform-origin: left; }
+.inp input:focus + .label, .inp select:focus + .label { color: var(--color-page); transform: translate3d(0, -12px, 0) scale(0.75); top: -15px; font-size: 16px; }
+.inp .label { position: absolute; top: -7px; left: 8px; font-size: 14px; color: #333; font-weight: 500; transform-origin: 0 0; transform: translate3d(0, 0, 0); transition: all 0.2s ease; pointer-events: none; background: none; padding: 0 5px; }
+label[for="noidung"].inp {display: block;}
+label[for="noidung"].inp .label{top: 7px;}
+/* label[for="noidung"].inp {height: 141px;} */
+.inp textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; border: 0; font-family: inherit; padding: 20px 12px 0 12px; min-height: 50px; font-size: 15px; font-weight: 400; color: #000; transition: all 0.15s ease;border: none; border-bottom: 1px solid #ebebeb; background: rgba(255,255,255,0.7);outline: none;}
+.inp textarea:focus + .label { color: var(--color-page); transform: translate3d(0, -11px, 0) scale(0.75); top: 7px; font-size: 16px; }
+
+.map_iframe iframe{width: 100%; height: 450px;display: block;}
+
+.contact-conatiner{background: repeating-linear-gradient( 135deg ,#b8cbe0 0 16px,#fafafa 0 24px,#fdbfad 0 40px,#fff 0 48px); padding: 10px;border-radius: 8px;
+}
+.top-contact{/*background: url(../img/contact_hand.png) no-repeat bottom left -1.5rem;*/padding:2.5rem 1.5rem;}
+.contact-box{background: #fafafa;}
+
+.inp input:-internal-autofill-selected{background-color: #fff;}
+
+.inp .form-control:focus{border-color: transparent;box-shadow: unset;}
+.input-contact .custom-file-label{background: rgba(255,255,255,0.7);border: none;}
+.btn-contact{background-color: var(--color-page);color: #fff;padding: 5px 25px; border-radius: 30px; min-width: 150px;box-shadow: 2px 2px 2px #ccc;margin-top: 20px;}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}

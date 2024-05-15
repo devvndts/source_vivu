@@ -1,0 +1,56 @@
+<div class="cate-top">
+    <div class="container">
+        <div class="cate-info">
+            <div class="cate-info__title">Danh mục sản phẩm</div>
+            <div class="cate-info__content">
+                <ul>
+                    <li><a href="">Danh mục<i class="far fa-chevron-right"></i></a>
+
+                        
+                    </li>
+                    <li class="hoverhori"><a href="">Danh mục x<i class="far fa-chevron-right"></i></a>
+                        <ul>
+                            <li><a href="">Danh mục</a></li>
+                            <li><a href="">Danh mục xx</a>
+                                <ul>
+                                    <li><a href="">Danh mục xxx</a></li>
+                                    <li><a href="">Danh mục</a></li>
+                                    <li><a href="">Danh mục</a></li>
+                                    <li><a href="">Danh mục</a></li>
+                                    <li><a href="">Danh mục</a></li>
+                                    <li><a href="">Danh mục</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Danh mục</a></li>
+                            <li><a href="">Danh mục</a></li>
+                            <li><a href="">Danh mục</a></li>
+                            <li><a href="">Danh mục</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Danh mục<i class="far fa-chevron-right"></i></a></li>
+                    <li><a href="">Danh mục<i class="far fa-chevron-right"></i></a></li>
+                    <li><a href="">Danh mục<i class="far fa-chevron-right"></i></a></li>
+                    <li><a href="">Danh mục<i class="far fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cate-slider">
+            <ul class="cate-slider__nav">
+               <li><a href="">Giới thiệu</a></li> 
+               <li><a href="">Giới thiệu</a></li> 
+               <li><a href="">Giới thiệu</a></li> 
+               <li><a href="">Giới thiệu</a></li> 
+            </ul>
+            <div class="cate-slider__container">
+                <div class="cate-slider-left">
+                    <!-- Slider -->
+                    @include('desktop.layouts.slider')   
+                </div>
+                <div class="cate-slider-right">
+                    <a href="" class="cate-slider__banner"><img src="" alt=""></a>
+                    <a href="" class="cate-slider__banner"><img src="" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

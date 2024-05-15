@@ -1,0 +1,67 @@
+@php
+	use App\Models\OrderDetail;
+@endphp
+@if($products)
+	<div class="product__grid product__grid--4">
+		@foreach($products as $k=>$v)		
+			@php
+				$default_sell = $v['sell'] ?? 0;
+				$order_detail = new OrderDetail();
+				$count_luotmua = $order_detail->where('id_product', $v["id"])->where('hienthi',1)->count();
+				$quantitySold = sprintf('<span class="box-product-quantity-sold">Đã bán %d sản phẩm</span>',$count_luotmua + $default_sell);
+				$discountPercent = ($v["giakm"]) ? sprintf('<span class="box-product-discount-percent"><i>-%d%%</i></span>',$v["giakm"]) : '';
+				$xhtmlShortdesc = ($v["motangan".$lang]) ? sprintf('<div class="box-product-shortdesc">%s</div>',$v["motangan".$lang]) : '';
+			@endphp	
+			<div class="box-product-item">
+				<div class="box-product-img">
+					<a href="{{$v['tenkhongdau'.$lang]}}" class="himg aspect-ratio aspect-ratio--1-1" title="{{$v['ten'.$lang]}}">
+		                <img class="lazy loaded" src="{{ Thumb::Crop(UPLOAD_PRODUCT,$v['photo'],325,325,2,$v['type'])}}" alt="{{$v['ten'.$lang]}}" width="325" height="325">
+		                <span class="box-product-iconnew">
+		                	@if($v['noibat'])<img src="img/icon/new.png" alt="icon new" width="50" height="28">@endif
+		                	@if($v['muanhieu'])<img src="img/icon/best.png" alt="icon new" width="65" height="37">@endif
+		                </span>	
+		                <span class="box-product-outstock"><img src="img/icon_outstock.png" alt="outstock"></span>
+		                {!! $quantitySold !!}
+		                {!! $discountPercent !!}
+		            </a>            
+						<div class="box-product-btncart /btn-buy-cart change-prop-btn" data-code="" data-id="{{$v['id']}}" data-action="addnow"><img src="img/icon_cart.png" alt="cart" width="38" height="38"></div>
+		            {{-- 
+		             --}}
+		            @php
+            			$colors = Helper::GetCheckColor($v);
+            			$sizes = Helper::GetCheckSize($v);
+            			// $pricebetween = Helper::GetPriceBetween($v['id']);
+            		@endphp	
+            		@if($colors)
+            			<input type="hidden" name="cart-color" value="{{$colors[0]['id']}}">
+	            	@endif
+	            	@if($sizes)
+            			<input type="hidden" name="cart-size" value="{{$sizes[0]['id']}}">
+	            	@endif
+	            </div>
+	            <div class="box-product-info">
+	            	<div class="box-product-detail">
+	            		<h3 class="box-product-name"><a href="{{$v['tenkhongdau'.$lang] ?? ''}}">{{$v['ten'.$lang] ?? ''}}</a></h3>
+	            		{!! $xhtmlShortdesc !!}
+	            		
+				        {{--
+	            		<div class="box-product-price">
+	            			<p class="box-product-newprice">{{Helper::Format_Money($pricebetween['giamin']) ?? ''}}</p>
+	            			<span>-</span>
+	            			<p class="box-product-oldprice">{{Helper::Format_Money($pricebetween['giamax']) ?? ''}}</p>
+	            		</div>
+	            		--}}	
+	            		<div class="box-product-price">
+	            			<p class="box-product-newprice">{!! ($v['giamoi']>0) ? Helper::Format_Money($v['giamoi'],'').'<span> VNĐ</span>' : (($v['gia']>0) ? Helper::Format_Money($v['gia'],'').'<span> VNĐ</span>' : 'Liên hệ' ) !!}
+	            			</p>
+	            			<p class="box-product-oldprice">{!! ($v['giamoi']>0) ? Helper::Format_Money($v['gia'],' VNĐ') : '' !!}</p>
+	            		</div>
+	            	</div>
+	            	{{-- 
+					<div class="box-product-brand">{{$v['belong_to_brand']['ten'.$lang]??''}}</div>
+	            	 --}}
+	            </div>
+			</div>
+		@endforeach
+	</div>		
+@endif

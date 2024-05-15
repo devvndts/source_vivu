@@ -1,0 +1,251 @@
+@mixin set_homepage {
+}
+/*  ================================================================================
+  MIXIN DEVICES
+  ================================================================================ */
+  @mixin set_common{
+    .section{
+      // &:not(.section-pdlist-highlight){
+        // padding: 40px 0;
+      // }
+    }
+    .wrap-page{
+      // overflow: hidden;
+    }
+    .container{
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    .main-title{
+      @include e(name){
+        // font-size: 20px;
+      }
+    }
+    @include media("<=mobile"){
+      .main-title{
+        @include e(link){
+          font-size: 20px;
+        }
+        img{
+          max-width: 190px;
+        }
+        @include e(desc){
+          // font-size: em(30);
+        }
+      }
+    }
+  }
+/*========= SLIDER ===============*/
+@mixin set_slider{
+  .slider-left{
+  }
+  .slideshow{
+    // width: 100%;
+  }
+  .slider-content-swiper h5{
+    // font-size: 20px;
+  }
+  .slider-content-swiper p{
+    // display: none;
+  }
+  // .section-slider {
+  //   .main-slider{
+  //     width: 100%;
+  //     margin-bottom: 30px;
+  //   }
+  // }
+  // .quangcaohome{
+  //   &-slick{
+  //     width: 100%;
+  //     // margin: 0 -10px;
+  //   }
+  //   &-item{
+  //     padding: 0 10px;
+  //   }
+  // }
+}
+/*========= HEADER ===============*/
+@mixin set_header{
+  .header-info{
+    // display: none;
+  }
+  .header{
+    .social{
+      // display: none;
+    }
+  //   &-bottom{
+  //     .container{
+  //       @include flex-wrap(wrap);
+  //     }
+  //   }
+  //   .container{
+  //     background-image: none;
+  //   }
+  //   &-hotline{
+  //     display: none;
+  //   }
+  // }
+  // .logo{
+  //   margin-right: 10px;
+  // }
+  // .banner{
+  //   h2{
+  //     font-size: 28px;
+  //   }
+  //   p{
+  //     font-size: 20px;
+  //   }
+
+  }
+  // .logo-mobile{
+  //   // @include absolute($left: 50%, $top: 0px);
+  //   // @include translate(-50%, 0);
+  //   // display: block;
+  //   // margin-left: 10px;
+  //   // border-radius: 5px;
+  //   // background-color: #fff;
+  //   // padding: 5px;
+  //   img{
+  //     // filter: brightness(0) invert(1);
+  //     // max-height: 65px;
+  //     // max-height: 100px;
+  //   }
+  // }
+}
+/*========= FOOTER ===============*/
+@mixin set_footer{
+  .footer{
+  //   &-wrap{
+  //     // padding: 20px 0;
+  //   }
+  //   &-box{
+  //   }
+    @include e(info){
+      // width: 49%; margin-bottom: 1em;
+    }
+    @include e(newsletter){
+      // width: 49%; margin-bottom: 1em;
+    }
+  //   @include e(col){
+  //     width: 30%; margin-bottom: 1em;
+  //   }
+    @include e(baiviet){
+      // width: 49%; margin-bottom: 1em;
+    }
+    @include media("<=mobile"){
+      @include e(info){
+          // width: 100%;
+      }
+      @include e(newsletter){
+        // width: 100%; 
+      }
+  //     @include e(col){
+  //       width: 44%; 
+  //     }
+      @include e(baiviet){
+          // width: 100%;
+      }
+  //     @include e(fanpage){
+  //         width: 100%;
+  //     }
+    }
+  }
+  .copyright{
+    // &-wrap{
+    //     @include flex-wrap(wrap);
+    //     @include justify-content(center);
+    //     text-align: center;
+    //     padding: 7px;
+    //     height: auto;
+    //   }
+    //   @include e("text"){
+    //     width: 100%;
+    //     margin-bottom: 10px;
+    //     font-size: 14px;
+    //     // text-align: center;
+    //   }
+    //   .thongke{
+    //     @include justify-content(center);
+    //     width: 100%;
+    //     li {
+    //       &:first-child(){
+    //         margin-left: 0;
+    //         &:before{
+    //           display: none;
+    //         }
+    //       }
+    //     }
+    //   }
+  }
+  // #footer-map, #footer-map iframe{
+  //     height: 300px;
+  // }
+}
+/*========= MENU ===============*/
+@mixin set_menu{
+  #menu-main{
+    display: none;
+  }
+  .header-menu-btn{
+    display: flex;
+    margin-left: 20px;
+  }
+  // .menu-bar-res{
+  //   margin-right: 0;
+  //   @include m(right){
+  //     @include flex(1);
+  //     @include grid(flex, $flex-wrap: wrap, $justify-content: flex-end, $align-items: center, $gutter: null);
+  //     .lang-header{
+  //       // margin: 0 1rem 0;
+  //     }
+  //   }
+  // }
+  // .hero-image{
+  //   display: none;
+  // }
+  // .menubar{
+  //   display: none;
+  // }
+  // .menu_mobi {
+  //   display: flex;
+  // }
+  // #hamburger:before, #hamburger:after, #hamburger span{
+  //   background-color: #fff;
+  // }
+  // .search-res .icon-search{
+  //   color: #fff;
+  // }
+  // .menu-res{
+  //   width: 100%;
+  //   // border-bottom: 1px solid #eee;
+  //   background-color: darken($valak-bg, 4);
+  //   // background-color: $valak-bg;
+  // }
+  // .toolbar{
+  //   // background-color: $valak-bg;
+  //   background-color: darken($theme2, 5);
+  // }
+}
+/*========= PRODUCT ===============*/
+@mixin set_product($p_col: 12, $p_gutter: $product-gutter){
+  // .product-grid{
+  //   @include grid($display: flex, $flex-wrap:wrap, $gutter: $p_gutter);
+  // }
+  .box-product-item{
+    // @include grid-col($col: $p_col, $grid-columns: 12, $col-offset: null, $gutter: $p_gutter);  
+    // @include when-inside('.pd-hot'){
+    //   @include grid-col($col: $p_col, $grid-columns: 12, $col-offset: null, $gutter: $p_gutter);  
+    // }
+  }
+  // .sec-pdhighlight{
+  //   .page_danhmuc{
+  //     .product-grid {
+  //       @include grid($display: flex, $flex-wrap:wrap, $gutter: $product-gutter);
+  //     }
+  //     .product {
+  //       @include grid-col($col: 5, $grid-columns: 10, $gutter: $product-gutter); 
+  //     }
+  //   }
+  // }
+}
+/*========= NEW ===============*/

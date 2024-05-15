@@ -1,0 +1,117 @@
+@include render('footer') {
+  // -----------------------------------------------------------------------------
+  // This file contains all styles related to the footer of the site/application.
+  // -----------------------------------------------------------------------------
+  .footer{ 
+    @include z-index(default);
+    position: relative;
+    @include bg("ft-bg.png",$background-repeat: no-repeat,$background-size: cover,$background-position: 0 0);
+    margin-top: 90px;
+    &-wrap{
+      // @include bg("ft-bg.png",$background-repeat: no-repeat,$background-size: cover,$background-position: 0 0);
+      position: relative; 
+      background-color: var(--footer-bg);
+    }
+    &-box{
+      // @extend .section;
+      @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: null, $flex-direction: null);
+    }
+    &-logo{
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    @include e("title"){
+      @include setFont(17px, #ed1c24, null, var(--menu-font), 1.3);
+      text-shadow: -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 4px 6px 7px rgba(1,1,1,.3), 2px 0 0 #fff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    @include e("line"){
+      // @include box(44px, 1px);
+      // @include bg("ft-line.png",$background-repeat: no-repeat,$background-size: null,$background-position: 0 0,$background-color: null);
+      // border: 0;
+      // margin-left: 0;
+      // background-color: #fff;
+      // margin-left: 0;
+      // border-top-color: rgba(#000, .2);
+      // border-bottom: 1px solid rgba(#fff, .2);
+    }
+    @include e("col"){
+      width: percentage(310/$max);
+      img{
+        max-width: 200px;
+      }
+    }
+    @include e("info"){
+      width: percentage(345/$max);
+      background-color: #fff;
+      position: relative;
+      padding: 20px;
+      margin-top: -50px;
+      border: 1px solid #c3c1c1;
+      &-body{
+        @include setFont(13px, #fff, 500, null, null);
+        p{
+          margin-bottom: 10px;
+        }
+      }
+      ul{
+        @extend %reset-list;
+        li{
+          position: relative;
+          margin-bottom: 10px;
+          p{
+            @include setFont(17px, var(--theme), 400, null, null);
+            word-break: break-all;
+            margin-bottom: 0;
+            padding-left: 50px;
+            &~p{
+              color: #000;
+            }
+          }
+          &.i-hotline{
+            @include p-el(before, $el-width: null, $el-height: null){
+              content: url($images-url+"i-hotline.png");
+              top: 7px;
+            }
+          }
+          &.i-address{
+            @include p-el(before, $el-width: null, $el-height: null){
+              content: url($images-url+"i-location.png");
+              top: 7px;
+            }
+          }
+          &.i-email{
+            @include p-el(before, $el-width: null, $el-height: null){
+              content: url($images-url+"i-email.png");
+              top: 7px;
+            }
+          }
+        }
+      }
+    }
+    @include e("map"){
+      width: percentage(200/$max);
+      img{
+        max-width: 150px;
+      }
+    }
+    @include e("fanpage"){
+      // order: 3;
+      width: percentage(340/$max);
+      #fanpage-facebook{
+        max-height: 220px;
+        overflow: hidden;
+      }
+    }
+  }
+  $codemaps: ("#footer-map": $map-height, ".codebando": $map-height);
+  @each $name, $value in $codemaps {
+    #{$name}, #{$name} iframe{
+      overflow: hidden;
+      width: 100%;
+      height: $value;
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@include render('dmsp') {
+  #widget-dmsp{
+    @extend %reset-list;
+    li{
+      @extend %transition;
+      position: relative;
+      padding: 5px;
+      a{
+        @include setFont(15px, #000, 400, null, null);
+        display: inline-block;
+        padding: 5px;
+      }
+      ul{
+        @extend %reset-list;
+        @include absolute($left: 0, $top: 0px);
+        opacity: 0;
+        background-color: #eee;
+        width: 100%;
+      }
+      @include hover{
+        background-color: #fff;
+        &>ul{
+          left: 100%;
+          opacity: 1;
+        }
+      }
+    }
+
+    &>li{
+      
+      &>a{
+        position: relative;
+        @include p-el(before, $el-width: null, $el-height: null){
+          content: "- ";
+          position: relative;
+        } 
+        @include hover{
+
+        }
+      }
+    }
+  }
+  .nav-level-1__list{
+    
+  }
+  .nav-level-1__item{
+    $this: &; 
+    &-box{
+      @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, 
+        $align-items: center, $gutter: null);
+      border-bottom: 1px dashed #cacaca;
+      padding: 10px;
+      i{
+        @include box(22px,22px);
+        @include grid(inline-flex, $flex-wrap: wrap, $justify-content: center, $align-items: center, $gutter: null);
+        color: #fff;
+        cursor: pointer;
+        &:before{
+          content:"\f106";
+        }
+        &.collapsed{
+          cursor: pointer;
+          &:before{
+            content:"\f107";
+          }
+        }
+        
+      }
+      .nav-level-1__link{
+        @include setFont(15px, #fff, 400, null);
+        @include transition;
+        text-transform: uppercase;
+        // @include bg("right.jpg",$background-repeat: no-repeat,$background-size: null,$background-position: 0 7px);
+        // padding-left: 15px;
+        @include hover{
+          color: #ff0;
+        }
+      }
+    }
+    @include doubly{
+      #{$this}-box{
+      }
+    }
+    
+  }
+  .nav-level-2__list{
+    .nav-level-2__item{
+      position: relative;
+      border-bottom: 1px dashed #cacaca;
+      @include p-el(before, $el-width: 6px, $el-height: 6px){
+        @include absolute($left: 20px, $top: 18px);
+        border-radius: 50%;
+        background-color: #fff;
+        
+      }
+      .nav-level-2__link{
+        @include setFont(15px, #fff, 400, null);
+        @include transition;
+        padding: 10px 10px 10px 30px;
+        display: block;
+        @include hover{
+          color: #ff0;
+        }
+      }
+      @include doubly{
+        
+      }
+    }
+  }
+  .nav-level-3__list{
+    .nav-level-3__item{
+      position: relative;
+      border-top: 1px dashed #cacaca;
+      @include p-el(before, $el-width: 5px, $el-height: 5px){
+        @include absolute($left: 30px, $top: 22px);
+        background-color: #000;
+      }
+      .nav-level-3__link{
+        @include setFont(15px, #000, 400, null);
+        @include transition;
+        display: block;
+        padding: 15px 15px 15px 45px;
+        @include hover{
+          color: $theme2;
+        }
+      }
+      @include doubly{
+        
+      }
+    }
+  }
+}

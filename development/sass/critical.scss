@@ -1,0 +1,61 @@
+@charset 'UTF-8';
+// 1. Configuration and helpers
+@import
+  'abstracts/include-media',
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins',
+  'abstracts/flexbox-grid-mixins';
+
+// 2. Vendors
+// @import
+//    'vendors/fontawesome-all',
+//    'vendors/animate',
+//    'vendors/jquery.fancybox.min',
+//    'vendors/slick',
+//    'vendors/slick-theme';
+
+// 3. Base stuff
+// @import
+//   'base/base',
+//   'base/default',
+//   'base/style',
+//   'base/fonts',
+//   'base/typography',
+//   'base/helpers';
+
+// 4. Layout-related sections
+@import
+//   'layout/wgdmsp',
+  'layout/navigation',
+  'layout/header',
+  'components/search',
+  'components/mxh',
+  'components/pagination',
+  'components/valak_menu';
+
+// 5. Components
+// @import
+//   'components/form',
+//   'components/tag',
+//   'components/search',
+//   'components/pagination',
+//   'components/mxh',
+//   'components/videomain',  
+//   'components/button';
+
+// 6. Page-specific styles
+// @import
+//   'pages/home',
+//   'pages/giohang',
+//   'pages/news',
+//   'pages/product';
+
+// 7. Themes
+// @import
+//   'themes/default';
+
+// css mobile
+// @import
+//   'components/valak_menu',
+//   'devices/mobile';

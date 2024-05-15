@@ -1,0 +1,69 @@
+@php
+    $vi_sao = get_posts('vi-sao', $lang, ['order_by' => ['stt' => 'asc']]);
+    // $gioi_thieu = get_static('gioi-thieu', $lang);
+    // $name = $gioi_thieu->{'ten'.$lang} ?? '';
+    // $desc = $gioi_thieu->{'mota'.$lang} ?? '';
+    // $url = url('gioi-thieu');
+    // $img = Thumb::Crop(UPLOAD_STATICPOST, $gioi_thieu->photo ?? '', 720, 550, 1);
+@endphp
+@if ($vi_sao)
+<div class="py-24">
+    <div class="max-w-[1440px] mx-auto relative z-0">
+        <x-shared.image src="{{ asset('public/pts/why-bg.png') }}"
+            class="absolute right-0 -top-5 lg:top-0"
+        ></x-shared>
+    </div>
+    <div class="container relative z-10 max-w-screen-xl">
+        <div class="flex flex-wrap justify-between lg:flex-nowrap">
+            <x-shared.title class="max-w-[464px] text-center lg:text-left w-full lg:pt-11 revealOnScroll" data-animation="animate__fadeInLeft" timeout="500">
+                <x-slot name="title" class="leading-tight" >Tại sao chọn chúng tôi</x-slot>
+            </x-shared.title>
+            <div class="max-w-[837px] w-full lg:ml-14">
+                <div class="swiper swiper-why lg:mt-[77px]">
+                    <div class="swiper-wrapper">
+                        @foreach ($vi_sao as $item)
+                        @php
+                            $name = $item->{'ten'.$lang} ?? '';
+                            $desc = $item->{'mota'.$lang} ?? '';
+                            $url = url($item->{$sluglang} ?? '');
+                            $img = Thumb::Crop(UPLOAD_POST, $item->photo ?? '', 110, 110, 1);   
+                        @endphp
+                            <div class="py-6 text-center swiper-slide revealOnScroll" data-animation="animate__fadeInUp" timeout="500">
+                                <div class="bg-white h-[260px] pt-9 flex flex-col items-center px-5 shadow-[0px_12px_22px_rgba(0,0,0,0.05)]">
+                                    <figure class="w-[110px] mx-auto mb-6 h-[110px] flex items-center justify-center overflow-hidden">
+                                        <x-shared.image class="transition duration-300 ease-in-out hover:scale-110" src="{{ $img }}" />
+                                    </figure>
+                                    <div class="text-sm line-clamp-3">
+                                        {{ $desc }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@push('js_page')
+    <script>
+        $(document).ready(function() {
+            const swiperWhy = new Swiper('.swiper-why', {
+                autoplay: JS_AUTOPLAY && {
+                    delay: 5000,
+                },
+                loop: true,
+                spaceBetween: 24,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    }
+                }
+            });
+        });
+    </script>
+@endpush
+@endif

@@ -1,0 +1,15 @@
+.product-item-desc{
+    /* @apply hidden; */
+}
+.product-item-desc p{
+    @apply text-base font-bold text-primary;
+}
+.product-item-desc p:before{
+    @apply rounded-full w-1 h-1 bg-primary content-[''] inline-block mr-[5px] mb-[5px];
+}
+@media (max-width: 1024px) { 
+    /* .product_detail_content #header, .product_detail_content .hbreadcrumb, .product_detail_content .buy-at {
+        @apply hidden;
+    } */
+    
+}

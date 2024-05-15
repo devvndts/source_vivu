@@ -1,0 +1,106 @@
+@include render('newsletter') {
+  /* section-newsletter */
+  .newsletter{
+    // @include bg("dknt.png",$background-repeat: no-repeat,$background-size: cover,$background-position: 0 0,$background-color: $theme2);
+    // @include flex(1);
+    // @include absolute($left: 0px, $top: 0px);
+    // border: 8px solid transparent;
+    // border-image-source: url($images-url+"bd-img2.png");
+    // border-image-slice: 8 8 8 8;
+    .container {
+
+    }
+    form{
+      // @include absolute($right: 15px, $top: 50px);
+      // border: 10px solid transparent;
+      // border-image-source: url($images-url+"bd-img.png");
+      // border-image-slice: 10 10 10 10;
+      // background-color: #fff;
+      // width: 370px;
+      // padding: 25px 20px;
+      .form-group-flex{
+        @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: null, $gutter: null);
+        .form-group{
+            @include flex(1);
+            @include doubly{
+              margin-left: 10px;
+            }
+        }
+      }
+      .form-group-linethird{
+        // @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: null, $gutter: null);
+        .form-group{
+          // @include flex(1);
+          // margin-right: 10px;
+        }
+      }
+      .form-group{
+        position: relative;
+        margin-bottom: 10px;
+        label{
+          // @include setFont(13px, #fff, 400, null);
+          // width: 80px;
+          // margin: 10px 10px 0 0;
+          // text-transform: uppercase;
+        }
+
+        @include doubly{
+        }
+
+        .input-group-text{
+          // background-color: #ff5030;
+          // border: 0;
+          // color: #fff;
+        }
+        .invalid-feedback{
+          visibility: hidden;
+          height: 0;
+          margin: 0;
+        }
+        .form-control{
+          @include setFont(16px, #000, 400, null);
+          @include placeholder(rgba(#000, 0.5));
+          @include flex(1);
+          height: 57px;
+          padding: 10px;
+          background-color: #d6d2d2;;
+          border: 0;
+          border-radius: 10px;
+          // border-radius: 3px;
+          outline: none;
+          box-shadow: none;
+        }
+        textarea.form-control{
+          // @include flex(unset);
+          // width: 100%;
+          height: 106px;
+        }
+      }
+
+      .newsletter-button{
+        // @include p-el(before, $el-width: null, $el-height: null){
+        //     @include setFont(15px, #fff, 700, $font-awesome);
+        //     content: "\f0e0";
+        // }
+        margin-top: 20px;
+        input[type="submit"], input[type="reset"]{
+          @include setFont(25px, #fff, 400, null, 57px);
+          // @include box(223px,44px);
+          // @include bg("dknt-btn.png",$background-repeat: no-repeat,$background-size: null,$background-position: 0 0);
+          background-color: #c50e0e;
+          display: block;
+          // width: fit-content;
+          text-transform: uppercase;
+          // white-space: normal;
+          // text-indent: 10000px;
+          width: 100%;
+          border-radius: 0;
+          border: 0;
+          text-align: center;
+          padding: 0 10px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+@include render('navigation') {
+  .menubar{
+    @include z-index(navigation-rainbow);
+    @include relative($left: 0px, $top: 0);
+    &-container{
+      // @include grid(flex, $flex-wrap: nowrap, $justify-content: space-between, $align-items: null, $gutter: null);
+      background-color: var(--menu-bg);
+    }
+    &.fixed{ 
+      // @include boxShadow(0 0 18px rgba(0,0,0,.25));
+    }
+  }
+
+  .menu{
+    $this: &;
+    // @include flex(1);
+    @include grid(flex, $flex-wrap: nowrap, $justify-content: space-between, $align-items: center, $gutter: null);
+    position: relative;
+    @include e(list){
+
+    }
+
+    @include e(item){
+      @include transition;
+      @include grid(flex, $flex-wrap: null, $justify-content: null, $align-items: center, $gutter: null);
+      // @include flex(auto);
+      position: relative;
+      @include hover{
+        #{$this}__link{
+          color: var(--menu-link-hover-color);
+          // background-color: var(--menu-item-hover-bg);
+        }
+        #menu_main{
+          @include scaleY(1);
+          visibility: visible; 
+          opacity: 1;
+        }
+      }
+      margin-right: 20px;
+    }
+
+    @include e(link){
+      @include setFont(16px, var(--theme2), 400, var(--menu-font), null);
+      @include grid(flex, $flex-wrap: null, $justify-content: center, $align-items: center, $flex-direction: null);
+      @include transition;
+      min-height: 22px; 
+      text-transform: capitalize;
+      padding: 0;
+      position: relative;
+      // width: calc(100% - 20px);
+      width: 100%;
+      text-align: center;
+      // figure{
+      //   @include box(40px,30px);
+      //   @include bg("",$background-repeat: no-repeat,$background-size: contain,$background-position: center center);
+      //   background-image: var(--bg-img);
+      //   margin-bottom: 5px;
+      // }
+      &.active{
+        // background-color: var(--menu-item-hover-bg);
+        // color: var(--menu-link-hover-color);
+      }
+    }
+
+    @include e(line){
+      // @include box(10px, 10px);
+      // border: 1px solid #000;
+      // @include bg("line.png",$background-repeat: no-repeat,$background-size: null,$background-position: 0 0);
+      // margin: 0 30px;
+      // transform: rotate(45deg);
+    }
+
+    @include m(left){
+      @extend %reset-list;
+      @include z-index(navigation-rainbow);
+      @include grid(flex, $flex-wrap: nowrap, $justify-content: space-between, $align-items: center, $gutter: null);
+      @include flex(1);
+      position: relative;
+    }
+
+    @include m(right){ 
+      // @extend %reset-list;
+      // @extend %p_menu_list;
+    }
+    #menu_main{
+      @extend %reset-list;
+      @include boxShadow(0 3px 5px 0 rgba(0,0,0,.2));
+      @include transform-origin(0 0 0);
+      @include transition(all 0.4s ease 0s);
+      @include scaleY(0);
+      @include absolute($left: 0, $top: 100%);
+      // @include absolute($left: 100%, $top: 0);
+      visibility: hidden;
+      opacity: 0;
+      min-width: 200px;
+      li{
+        @include transition;
+        position: relative;
+        background-color: #fff;
+        @include hover{
+          background-color: var(--theme);
+          & > a {
+            color: #fff;
+          }
+          & > ul {
+            @include scaleY(1);
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+        @include doubly(){
+          border-top: 1px solid rgba(#fff, .4);
+        }
+        a{
+          @include setFont(14px, #333, 400, null);
+          @include transition;
+          display: block;
+          padding: 8px 10px;
+        }
+        ul{
+          @extend %reset-list;
+          @include boxShadow(0 3px 5px 0 rgba(#000,.2));
+          @include transform-origin(0 0 0);
+          @include transition(all .4s ease);
+          @include scaleY(0);
+          @include absolute($left: 100%, $top: 0);
+          visibility: hidden;
+          opacity: 0;
+          min-width: 200px;
+        }
+      }
+    }
+  }
+  
+  .menu_mobi, .menu_mobi_add {
+    display: none;
+  }
+
+  .menu-res{
+    // @include fixed($left: 0px, $top: 0px);
+    @include z-index(footer);
+    // @include scale(0.7);
+  }
+  .header-menu-btn{position: relative;width: 24px;height: 24px;text-align: center;cursor: pointer;display: none;align-items: center;}
+  .header-menu-btn span{border: 1px solid #000000;width: 80%;display: inline-block;border-radius: 15px;vertical-align: middle;margin-top: 3px;}
+  .header-menu-btn:after{content: '';position: absolute;border: 1px solid #000000;width: 98%;border-radius: 15px;top: 6px;left: 0px;}
+  .header-menu-btn:before{content: '';position: absolute;border: 1px solid #000000;width: 98%;border-radius: 15px;bottom: 2px;left: 0px;}
+}

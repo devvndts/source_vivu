@@ -1,0 +1,162 @@
+#valak_mmenu {
+    @include box(100%, 60px);
+    display: none;
+    padding: 0 10px;
+    background-color: $valak-bg; 
+    position: relative;
+    z-index: 9999;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 2px -2px gray;
+}
+.mask_menu {
+    @include fixed($top: 0);
+    @include box(100%, 100%);
+    background: #000;
+    opacity: 0.9;
+    display: none;
+    z-index: 99999999 !important;
+    @include when-inside(".expand_menu"){
+        display: block;
+    }
+}
+#valak_main {
+    @include transition(transform .5s cubic-bezier(.16,.68,.43,.99));
+    @include fixed($top: 0);
+    @include box(100%, 100%);
+    @include translate3d(-150%,0,0);
+    z-index: 999999999 !important;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 20%;
+    @include when-inside(".expand_menu"){
+        @include transition(transform .3s cubic-bezier(.16,.68,.43,.99));
+        @include translate3d(0,0,0);
+    }
+}
+.expand_menu {
+    overflow: hidden;
+}
+.logo_valak {
+    @include grid(flex, $flex-wrap: wrap, $justify-content: center, 
+      $align-items: center, $gutter: null);
+    @include setFont(20px, #fff, 700, $font-second);
+    padding: 7px 0;
+    background-color: $header_top-bg;
+    width: 100%;
+    text-shadow: 1px 1px 0px #000;
+    img{
+        max-height: 30px;
+    }
+}
+.scroll_menu_valak {
+    @include box(100%, 100%);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    float: left;
+    position: relative;
+    z-index: 12;
+}
+.main_manu_valak {
+    display: block;
+}
+.main_manu_valak li {
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #e8eaee;
+}
+.main_manu_valak li a {
+    @include setFont(14px, #333);
+    display: block;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.main_manu_valak li > ul > li {
+    border-bottom: 0;
+    border-top: 1px solid #e8eaee;
+}
+.main_manu_valak ul ul li {
+    padding-left: 20px;
+}
+.main_manu_valak li > ul {
+    display: none;
+}
+#close_valak {
+    @include box(20%, 50px);
+    @include absolute($right: 0px, $top: 0px);
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RDQ0RTBEMjNEREExMUU2OTMzMERCOTg2Njg1MUZCMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RDQ0RTBEMzNEREExMUU2OTMzMERCOTg2Njg1MUZCMiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRENDRFMEQwM0REQTExRTY5MzMwREI5ODY2ODUxRkIyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRENDRFMEQxM0REQTExRTY5MzMwREI5ODY2ODUxRkIyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+WKYvqgAAAGNJREFUeNpiYCAR/P//XxSILwLxCoaBAlBHXP4PASmDwRGZo44YdcSoI0YdMeqIQe0IIGAEVWBAWg+IfwDxzQFyx0MmhsECBkvUjDpm1DGjjhl1zKhjBpNjUgaDY6je5QQIMABFK3IhEWBF5gAAAABJRU5ErkJggg==') left 10px center no-repeat;
+    background-size: 34px 28px;
+    z-index: 999999999 !important;
+    cursor: pointer;
+}
+.btn_expand_menu_valak {
+    @include box(40px, 41px);
+    @include absolute($right: 0px, $top: 0px);
+    display: block;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyMDBweCIgaGVpZ2h0PSIyMDBweCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwMCAyMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cmVjdCBmaWxsPSJub25lIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIvPgo8Zz4KCTxyZWN0IGZpbGw9Im5vbmUiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIi8+CjwvZz4KPHBhdGggZmlsbD0iIzY2NjY2NiIgZD0iTTE5Mi4xNDMsOTIuODU3aC04NC4yODNWNy4xNDNjMC00LjI4Ni0yLjg2MS03LjE0NC03LjE0NC03LjE0NGMtNC4yODUsMC03LjE0NCw0LjI4Ni03LjE0NCw3LjE0NHY4NS43MTQKCUg3Ljg1OGMtNC4yODUsMC03LjE0NCwyLjg1Ni03LjE0NCw3LjE0NGMwLDQuMjgyLDQuMjg2LDcuMTQzLDcuMTQ0LDcuMTQzaDg1LjcxNHY4NS43MTRjMCw0LjI4MywyLjg1Niw3LjE0Miw3LjE0NCw3LjE0MgoJYzQuMjgyLDAsNy4xNDQtNC4yODIsNy4xNDQtOC41NzJ2LTg0LjI4M2g4NS43MTRjMi44NTksMCw1LjcxMi0yLjg2MSw1LjcxMi03LjE0M0MxOTkuMjg1LDk1LjcxNSwxOTYuNDMzLDkyLjg1NywxOTIuMTQzLDkyLjg1N3oiCgkvPgo8dGl0bGU+aG9tZV8yNF9zdmc8L3RpdGxlPgo8L3N2Zz4K') center center no-repeat;
+    background-size: 15px 15px !important;
+    z-index: 99;
+    cursor: pointer;
+}
+.btn_expand_menu_valak.more {
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyMDBweCIgaGVpZ2h0PSIyMDBweCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwMCAyMDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cmVjdCBmaWxsPSJub25lIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIvPgo8cGF0aCBmaWxsPSIjNjY2NjY2IiBkPSJNMTk0LjI0NywxMDcuMTk1SDcuMTk1QzQuMzE2LDEwNy4xOTUsMCwxMDQuMzEzLDAsMTAwYzAtNC4zMTYsMi44NzktNy4xOTUsNy4xOTUtNy4xOTVoMTg1LjYxCgljNC4zMjEsMCw3LjE5NCwyLjg3Niw3LjE5NCw3LjE5NUMyMDAsMTA0LjMxMywxOTcuMTI3LDEwNy4xOTUsMTk0LjI0NywxMDcuMTk1eiIvPgo8dGl0bGU+aG9tZV8yNF9zdmc8L3RpdGxlPgo8L3N2Zz4K') center center no-repeat;
+}
+.valak_mmenuf {
+    padding: 10px;
+    h2 {
+        @include setFont(15px, #888);
+        text-align: center;
+    }
+    p {
+        @include setFont(13px, #888);
+        text-align: center;
+        padding: 3px 0;
+        margin: 0;
+    }
+}
+.linebrk_valak {
+    @include box(100%, 18px);
+    background: #f9f9f9;
+}
+.logomini-box {
+    @include grid(flex, $flex-wrap: null, $justify-content: space-between, 
+      $align-items: center, $flex-direction: null);
+    width: 100%;
+    &__icon{
+        @include setFont(23px, $theme-color);
+        display: inline-block;
+    }
+    &__img{
+        max-height: 55px;
+    }
+}
+.valak-search {
+    @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, 
+      $align-items: center, $gutter: null);
+
+    @include flex(1);
+
+    @include absolute($right: 0px, $top: 100%);
+    background-color: #fff;
+    display: none;
+    &.hien{
+        display: flex;
+    }
+    input[type=text] {
+        @include flex(1);
+        font-size: 14px;
+        height: 34px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .btn_search {
+        width: 40px;
+        line-height: 34px;
+        text-align: center;
+        background: #ffffff;
+        color: #1c1c1c;
+        margin-left: 5px;
+    }
+}

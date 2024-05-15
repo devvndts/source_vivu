@@ -1,0 +1,76 @@
+@php
+    $quangcao = get_photos('quangcao', $lang, ['order_by' => ['stt' => 'asc']]);
+@endphp
+<div class="py-20 bg-[url(../pts/leaf-right.png)] bg-no-repeat bg-left-top">
+    <div class="bg-[url(../pts/leaf-s.png)] bg-no-repeat bg-right-bottom">
+        <div class="container max-w-screen-xl ">
+            <div class="mb-[50px] relative text-center z-10">
+                <div class="font-semibold text-base text-[#C0A9A1]">Giấy Chứng Nhận</div>
+                <div class="text-3xl">Những thành tựu đạt được</div>
+            </div>
+            @if ($quangcao)
+            <div class="swiper swiper-quangcao">
+                <div class="swiper-wrapper">
+                    @foreach ($quangcao as $item)
+                        @php
+                            $url = "";
+                            $photo = $item->photo;
+                            $img = Thumb::Crop(UPLOAD_PHOTO, $photo, 205, 335, 1);
+                            $imgLarge = Thumb::Crop(UPLOAD_PHOTO, $photo, 410, 670, 1);
+                        @endphp
+                        <div class="swiper-slide">
+                            <a class="revealOnScroll" data-animation="animate__zoomIn" data-fancybox="gallery27" href="{{ $imgLarge }}">
+                                <x-shared.image class="w-full" src="{{ $img }}" />
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="flex justify-center my-8">
+                <div class="!w-auto swiper-quangcao-pagination mr-5"></div>
+            
+                <div class="inline-flex">
+                    <div class="swiper-quangcao-button-prev"><span class="material-icons">
+                        arrow_back_ios
+                        </span></div>
+                    <div class="swiper-quangcao-button-next"><span class="material-icons">
+                        arrow_forward_ios
+                        </span></div>
+                </div>
+            </div>
+            @endif
+        </div>
+    </div>
+</div>
+@push('js_page')
+    <script>
+        $(document).ready(function() {
+            const swiperQuangcao = new Swiper('.swiper-quangcao', {
+                loop: true,
+                
+                navigation: {
+                    nextEl: '.swiper-quangcao-button-next',
+                    prevEl: '.swiper-quangcao-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-quangcao-pagination',
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    640: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    820: {
+                        slidesPerView: 4,
+                        spaceBetween: 60,
+                    }
+                }
+            });
+        });
+    </script>
+@endpush

@@ -1,0 +1,51 @@
+@include render('videomain') {
+  #video-khac{
+    @include clearfix;
+  }
+  #video-idx{
+    // width: percentage(420/580);
+    // float: left;
+    margin-bottom: 10px;
+  }
+  #iframe{
+    width: 100%;
+  }
+  #iframe, #video-idx{
+    overflow: hidden;
+    height: 450px;
+    @include media("<=mobile"){
+      height: 250px;
+    }
+  }
+  .video-khac-main{
+    // width: percentage(150/580);
+    // float: right;
+    margin: 0 -5px;
+    .slick-prev, .slick-next{
+      @include transform(scale(0.7) translate(0,-50%));
+    }
+    .slick-prev{
+      left: 3px;
+    }
+    .slick-next{
+      right: 3px;
+    }
+    .video-khac{
+      padding: 0 5px;
+      @include e(link){
+        display: block;
+        overflow: hidden;
+        @include aspect-ratio(280, 230);
+        @include p-el(after, $el-width: 40px, $el-height: 28px){
+          @include absolute($left: 50%, $top: 50%);
+          @include translate(-50%, -50%);
+          @include z-index(share-type);
+          @include bg("playin.png",$background-repeat: no-repeat,$background-size: contain,$background-position: center center);
+        }
+      }
+      @include e(img){
+        @extend %img-fill;
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+@handheld
+	@if(isset($slidemobile))
+	<div class="center-layout slider">
+		<div class="slider__owl owl-carousel owl-theme">
+			@foreach ($slidemobile as $key => $value)
+				<a class="himg aspect-ratio">
+					<img class="owl-lazy" data-src="{{ (isset($value['photo']))?Thumb::Crop(UPLOAD_PHOTO,$value['photo'],1245,1410,1):'' }}" srcset="{{ (isset($value['photo']))?Thumb::Crop(UPLOAD_PHOTO,$value['photo'],1245,1410,1):'' }} 450w,{{ (isset($value['photo']))?Thumb::Crop(UPLOAD_PHOTO,$value['photo'],1245,1410,1):'' }} 800w" sizes="100vw" alt="{{$value['tenvi']}}">
+				</a>
+			@endforeach
+		</div>
+	</div>
+	@endif
+@elsedesktop
+	@if(isset($slider))
+	<div class="slider">
+		<div class="slider__owl owl-carousel owl-theme">
+			@foreach ($slider as $key => $value)
+				@if($value['photo']!='')
+				<div class="himg aspect-ratio slide-item">
+					<img class="owl-lazy" data-src="{{ (isset($value['photo']))?Thumb::Crop(UPLOAD_PHOTO,$value['photo'],1440,740,1):'' }}" srcset="{{ (isset($value['photo']))?Thumb::Crop(UPLOAD_PHOTO,$value['photo'],1440,740,1):'' }} 1440w" sizes="100vw" alt="{{$value['tenvi']}}">
+				</div>
+				@endif
+			@endforeach
+		</div>
+	</div>
+	@endif
+@endhandheld
+
+@push('js_page')
+	<script src="{{asset('js/gsap.min.js')}}"></script>
+	<script>
+		$(document).ready(function(){
+		    MoveBackground();
+		});
+
+		function MoveBackground() {
+		    function e() {
+		        gsap.to(".slide-model img", 1, {
+		            x: 0,
+		            y: 0,
+		            z: 0,
+		            ease: Power2.easeOut
+		        }), gsap.to(".slide-sale img", 1, {
+		            x: 0,
+		            y: 0,
+		            z: 0,
+		            ease: Power2.easeOut
+		        }), gsap.to(".slide-descript img", 1, {
+		            x: 0,
+		            y: 0,
+		            z: 0,
+		            ease: Power2.easeOut
+		        })
+		    }
+
+		    function t() {
+		        DX = o.X - i, DY = o.Y - l, MoveX = DY / l, MoveY = -(DX / i), Radius = Math.sqrt(Math.pow(MoveX, 2) + Math.pow(MoveY, 2)), Degree = 10 * Radius, gsap.to(".slide-model img", 3, {
+		            x: 30 * MoveX,
+		            y: 30 * MoveY,
+		            z: Degree,
+		            ease: Power2.easeOut
+		        }), gsap.to(".slide-sale img", 3, {
+		            x: 30 * MoveX,
+		            y: 30 * MoveY,
+		            z: Degree,
+		            ease: Power2.easeOut
+		        }), gsap.to(".slide-descript img", 3, {
+		            x: 0,
+		            y: 30 * MoveY,
+		            z: 0,
+		            ease: Power2.easeOut
+		        })
+		    }
+		    var a = null,
+		        o = {
+		            X: 0,
+		            Y: 0
+		        },
+		        i = $(window).width() / 2,
+		        l = $(window).height() / 2;
+
+
+		    s = $(".slider .owl-item");
+		    $(s).addClass("moving"), $(window).width() > 1100 ? $(s).on("mousemove", function(e) {
+		    	//console.log(e.pageX);
+		        o.X = e.pageX, o.Y = e.pageY, cancelAnimationFrame(a), a = requestAnimationFrame(t)
+		    }) : $(s).on("mousemove", function() {
+		        cancelAnimationFrame(a), e()
+		    }), $(window).resize(function() {
+		        $(window).width() > 1100 ? (i = $(window).width() / 2, l = $(window).height() / 2) : e()
+		    })
+		}
+	</script>
+@endpush

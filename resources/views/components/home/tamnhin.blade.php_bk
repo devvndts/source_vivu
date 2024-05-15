@@ -1,0 +1,29 @@
+@php
+    $gioi_thieu = get_static('tam-nhin-su-menh', $lang);
+    $name = $gioi_thieu->{'ten'.$lang} ?? '';
+    $desc = $gioi_thieu->{'mota'.$lang} ?? '';
+    $content = $gioi_thieu->{'noidung'.$lang} ?? '';
+    $url = url('tam-nhin-su-menh');
+    $img = Thumb::Crop(UPLOAD_STATICPOST, $gioi_thieu->photo ?? '', 500, 500, 1);
+@endphp
+<div class="py-20 bg-white">
+    <div class="container relative max-w-screen-xl">
+        <div class="bg-[url(../pts/leaf-left.png)] absolute w-[313px] h-[526px]  z-0 -left-[110px] -top-[70px]"></div>
+        
+        <div class="max-w-[820px] pt-[50px] ml-auto mb-[50px] relative z-20">
+            <div class="font-semibold text-base text-[#C0A9A1]">{{ $name }}</div>
+            <div class="text-3xl">{{ $desc }}</div>
+        </div>
+        <div class="relative z-10 flex flex-wrap justify-between md:flex-nowrap">
+            <div class="relative z-20 w-full md:w-[43%] revealOnScroll" data-animation="animate__zoomIn">
+                <x-shared.image class="w-full" src="{{ $img }}" />
+            </div>
+            <div class="w-full md:w-[50%] relative z-10 revealOnScroll" data-animation="animate__zoomIn">
+                <div class="bg-[url(../pts/bg-tamnhin.png)] bg-no-repeat bg-cover absolute w-[996px] -right-4 -top-48 h-[calc(100%_+_220px)] z-10 hidden lg:block"></div>
+                <div class="relative z-20 content-main w-clear">{!! $content !!}</div>
+                <x-shared.readmore class="relative z-20 " href="{{ $url }}" >
+                </x-shared.readmore>
+            </div>
+        </div>
+    </div>
+</div>

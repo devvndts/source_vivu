@@ -1,0 +1,51 @@
+/*hero-image*/
+.hero-image {
+    @include aspect-ratio(1366, 300);
+    @include e(img){ 
+        @extend %img-fill;
+    }
+}
+/*end hero-image*/
+
+/*circle-spin*/
+.circle-spin {
+    @include absolute($left: 0px, $top: 0px);
+    @include box(100%, 100%);
+    .circle {
+        @include box(100%, 100%);
+        @include transition(all .5s ease);
+        @include transform-origin(50% 50%);
+        position: absolute;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        border-radius: 95% 105% 105% 95%;
+        border-color: #fff;
+        &:nth-child(1) {
+            @include animation(spin1 6s linear infinite);
+        }
+        &:nth-child(2) {
+            @include animation(spin2 6s linear infinite);
+        }
+        &:nth-child(3) {
+            @include animation(spin3 6s linear infinite);
+        }
+        &:nth-child(4) {
+            @include animation(spin4 6s linear infinite);
+        }
+    }
+}
+/*end circle-spin*/
+
+
+/*border fill*/
+i.trai,i.phai{position:absolute;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-ms-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease}
+i.tren,i.duoi{position:absolute;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-ms-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease}
+i.trai{height:0;width:2px;left:0;top:0;background:-webkit-linear-gradient(bottom,red,orange,yellow,green,blue,indigo,violet);background:-o-linear-gradient(bottom,red,orange,yellow,green,blue,indigo,violet);background:-moz-linear-gradient(bottom,red,orange,yellow,green,blue,indigo,violet);background:linear-gradient(to top,red,orange,yellow,green,blue,indigo,violet)}
+i.phai{height:0;width:2px;right:0;bottom:0;background:-webkit-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);background:-o-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);background:-moz-linear-gradient(top,red,orange,yellow,green,blue,indigo,violet);background:linear-gradient(to bottom,red,orange,yellow,green,blue,indigo,violet)}
+i.tren{height:2px;width:0;right:0;top:0;background:-webkit-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);background:-o-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);background:-moz-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);background:linear-gradient(to right,red,orange,yellow,green,blue,indigo,violet)}
+i.duoi{height:2px;width:0;left:0;bottom:0;background:-webkit-linear-gradient(right,red,orange,yellow,green,blue,indigo,violet);background:-o-linear-gradient(right,red,orange,yellow,green,blue,indigo,violet);background:-moz-linear-gradient(right,red,orange,yellow,green,blue,indigo,violet);background:linear-gradient(to left,red,orange,yellow,green,blue,indigo,violet)}
+.product__box:hover i.trai{height:100%;bottom:0;top:inherit}
+.product__box:hover i.tren{width:100%;left:0}
+.product__box:hover i.phai{height:100%;top:0;bottom:inherit}
+.product__box:hover i.duoi{width:100%;right:0;left:inherit}
+/*end border fill*/

@@ -1,0 +1,29 @@
+@charset 'UTF-8';
+// ======================== VARIABLE ========================
+@import "variable"; 
+
+/* ======================== FONTS ======================== */
+@import "fonts";
+
+@import "imports";
+
+// 1. Configuration and helpers
+@import 'abstracts/main';
+
+// 2. Vendors
+// @import 'vendors/main';
+
+// 3. Base stuff
+@import 'base/main';
+
+// 4. Layout-related sections
+@import 'layout/main';
+
+// 5. Components
+@import 'components/main';
+
+// 6. Page-specific styles
+@import 'pages/main';
+
+// 7. Mobile
+@import 'devices/main';

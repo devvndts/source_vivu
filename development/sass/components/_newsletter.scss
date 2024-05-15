@@ -1,0 +1,42 @@
+@include render('newsletter') {
+  .newsletter{
+    @include e(desc){
+      font-weight: 400;
+      font-size: 14px;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+  }
+  .frm_newsletter{
+    @include grid(flex, $flex-wrap: nowrap, $justify-content: space-between, $align-items: center, $gutter: null);
+    width: 100%;position: relative;
+    // border: 1px solid #F14953;
+    border-radius: 5px;
+    overflow: hidden;
+    // height: 37px;
+    // padding: 0 5px;
+    // margin-top: 30px;
+    input[name="email"]{
+      @include flex(1);
+      outline: none;border: none;background: #fff; text-indent: 0px; line-height: 37px;
+      font-size: 14px;
+      color: #000;
+      display: block;
+      padding: 0 10px;
+      margin-bottom: 0;
+      &::placeholder{font-size: 14px;color: #828282;}
+    }
+    button{
+      cursor: pointer;border: none;outline: none;
+      @include grid( flex, $flex-wrap: wrap, $justify-content: center,
+                     $align-items: center, $gutter: null);
+      width: 53px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      padding: 0 ;
+      background-color: var(--theme);
+      height: 37px;
+    }
+  }
+}

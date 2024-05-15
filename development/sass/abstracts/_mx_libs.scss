@@ -1,0 +1,1272 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+/// @alias element
+// @mixin e($element) {
+//     &__#{$element} {
+//         @content;
+//     }
+// }
+/// @alias modifier
+// @mixin m($modifier) {
+//     &--#{$modifier} {
+//         @content;
+//     }
+// }
+$layer: null !default;
+@mixin render($name) {
+   @if(index(map-get($imports, $layer), $name)) {
+      @content;
+   }
+}
+$elementSeparator: '__';
+$modifierSeparator: '--';
+
+@function containsModifier($selector) {
+    $selector: selectorToString($selector);
+    @if str-index($selector, $modifierSeparator) {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+@function selectorToString($selector) {
+    $selector: inspect($selector); //cast to string
+    $selector: str-slice($selector, 2, -2); //remove brackets
+    @return $selector;
+}
+
+@function getBlock($selector) {
+    $selector: selectorToString($selector);
+    $modifierStart: str-index($selector, $modifierSeparator) - 1;
+    @return str-slice($selector, 0, $modifierStart);
+}
+
+@mixin b($block) {
+    .#{$block} {
+        @content;
+    }
+}
+
+@mixin e($element) {
+    $selector: &;
+    @if containsModifier($selector) {
+        $block: getBlock($selector);
+        @at-root {
+            #{$selector} {
+                #{$block+$elementSeparator+$element} {
+                    @content;
+                }
+            }
+        }
+    } @else {
+        @at-root {
+            #{$selector+$elementSeparator+$element} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin m($modifier) {
+    @at-root {
+        #{&}#{$modifierSeparator+$modifier} {
+            @content;
+        }
+    }
+}
+
+// @include b(test) {
+//     background: red;
+//     @include el(element){
+//         font-size: 14px;
+
+//         @include mo(big) {
+//             font-size: 18px;
+//         }
+//     };
+//     @include mo(modifier) {
+//         color: blue;
+
+//         @include el(subelement) {
+//             background: gray;
+//         }
+//     }
+// }
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+// Optional hyphenation
+@mixin hyphens($mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: $mode;
+     -moz-hyphens: $mode;
+      -ms-hyphens: $mode; // IE10+
+       -o-hyphens: $mode;
+          hyphens: $mode;
+}
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: calc($height / $width) * 100%;
+  }
+  > .content {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+  }
+}
+// Placeholder text
+@mixin placeholder($color: $input-color-placeholder) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  &:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+}
+
+// Transformations
+// Browser Prefixes
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+@mixin scale($ratio...) {
+  -webkit-transform: scale($ratio);
+      -ms-transform: scale($ratio); // IE9 only
+       -o-transform: scale($ratio);
+          transform: scale($ratio);
+}
+
+@mixin scaleX($ratio) {
+  -webkit-transform: scaleX($ratio);
+      -ms-transform: scaleX($ratio); // IE9 only
+       -o-transform: scaleX($ratio);
+          transform: scaleX($ratio);
+}
+@mixin scaleY($ratio) {
+  -webkit-transform: scaleY($ratio);
+      -ms-transform: scaleY($ratio); // IE9 only
+       -o-transform: scaleY($ratio);
+          transform: scaleY($ratio);
+}
+@mixin skew($x, $y) {
+  -webkit-transform: skewX($x) skewY($y);
+      -ms-transform: skewX($x) skewY($y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
+       -o-transform: skewX($x) skewY($y);
+          transform: skewX($x) skewY($y);
+}
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+      -ms-transform: translate($x, $y); // IE9 only
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+          transform: translate3d($x, $y, $z);
+}
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+      -ms-transform: rotate($degrees); // IE9 only
+       -o-transform: rotate($degrees);
+          transform: rotate($degrees);
+}
+@mixin rotateX($degrees) {
+  -webkit-transform: rotateX($degrees);
+      -ms-transform: rotateX($degrees); // IE9 only
+       -o-transform: rotateX($degrees);
+          transform: rotateX($degrees);
+}
+@mixin rotateY($degrees) {
+  -webkit-transform: rotateY($degrees);
+      -ms-transform: rotateY($degrees); // IE9 only
+       -o-transform: rotateY($degrees);
+          transform: rotateY($degrees);
+}
+@mixin perspective($perspective) {
+  -webkit-perspective: $perspective;
+     -moz-perspective: $perspective;
+          perspective: $perspective;
+}
+@mixin perspective-origin($perspective) {
+  -webkit-perspective-origin: $perspective;
+     -moz-perspective-origin: $perspective;
+          perspective-origin: $perspective;
+}
+@mixin transform-origin($origin) {
+  -webkit-transform-origin: $origin;
+     -moz-transform-origin: $origin;
+      -ms-transform-origin: $origin; // IE9 only
+          transform-origin: $origin;
+}
+
+// Transitions
+
+// @mixin transition($transition...) {
+//   -webkit-transition: $transition;
+//        -o-transition: $transition;
+//           transition: $transition;
+// }
+@mixin transition-property($transition-property...) {
+  -webkit-transition-property: $transition-property;
+          transition-property: $transition-property;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration...) {
+  -webkit-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+@mixin transition-timing-function($timing-function) {
+  -webkit-transition-timing-function: $timing-function;
+          transition-timing-function: $timing-function;
+}
+@mixin transition-transform($transition...) {
+  -webkit-transition: -webkit-transform $transition;
+     -moz-transition: -moz-transform $transition;
+       -o-transition: -o-transform $transition;
+          transition: transform $transition;
+}
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/* ==================== BORDER RADIUS ==================== */
+/* Ref: 
+    http://www.w3schools.com/css/css3_borders.asp 
+    http://border-radius.com/
+    border-radius: tl tr br bl:
+*/
+
+@mixin setBorderRadius($value){
+     border-radius: $value;
+    -webkit-border-radius: $value; 
+    -moz-border-radius: $value;       
+    -o-border-radius: $value;          // for Opera and Iphone5 Mobile**
+}
+
+
+/* ==================== BOX SHADOW ==================== */
+/* Ref: 
+    http://www.cssmatic.com/box-shadow
+*/
+
+@mixin boxShadow($shadows...){
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+@mixin insetBoxShadow($x, $y, $blur, $color){
+  -webkit-box-shadow: inset $x $y $blur $color;
+  -moz-box-shadow: inset $x $y $blur $color;
+  box-shadow: inset $x $y $blur $color;
+}
+
+/* ==================== Set Font ==================== */
+@mixin setFont($fontSize, $color: null, $fontWeight: null, $fontFamily: null, $lineHeight: null){
+  @if $fontSize != null {
+    font-size: $fontSize;
+  }
+
+  @if $color != null {
+    color: $color; 
+  }
+  
+  @if $fontWeight != null {
+    font-weight: $fontWeight; 
+  }
+
+  @if $fontFamily != null {
+    font-family: $fontFamily; 
+  }
+
+  @if $lineHeight != null {
+    line-height: $lineHeight;
+  }
+}
+
+/* ==================== HOVER A ==================== */
+/* Ref: 
+*/
+
+@mixin setTagAHover($color, $colorHover){
+    a {
+        color: $color; 
+        &:hover{
+            color: $colorHover;
+        }
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin setColumn($pColum, $pColumMargin) {
+    width: (100% - ($pColum - 1) * $pColumMargin) / $pColum;
+    margin-right: $pColumMargin;
+
+    &:nth-child(#{$pColum}n) { // 5
+        margin-right: 0%;
+        margin-bottom: $pColumMargin;
+    }
+
+    &:last-child {
+         margin-bottom: 0%;
+    }
+}
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+//----------------------------------
+
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Direction
+//
+// The 'flex-direction' property specifies how flex items are placed in
+// the flex container, by setting the direction of the flex container's
+// main axis. This determines the direction that flex items are laid out in. 
+//
+// Values: row | row-reverse | column | column-reverse
+// Default: row
+//
+// http://w3.org/tr/css3-flexbox/#flex-direction-property
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+  // Shorter version:
+  @mixin flex-dir($args...) { @include flex-direction($args...); }
+
+//----------------------------------------------------------------------
+
+// Flexbox Wrap
+//
+// The 'flex-wrap' property controls whether the flex container is single-line
+// or multi-line, and the direction of the cross-axis, which determines
+// the direction new lines are stacked in. 
+//
+// Values: nowrap | wrap | wrap-reverse
+// Default: nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-wrap-property
+
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else { 
+    -ms-flex-wrap: $value; 
+  }
+  flex-wrap: $value;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Flow (shorthand)
+//
+// The 'flex-flow' property is a shorthand for setting the 'flex-direction'
+// and 'flex-wrap' properties, which together define the flex container's
+// main and cross axes.
+//
+// Values: <flex-direction> | <flex-wrap> 
+// Default: row nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-flow-property
+
+@mixin flex-flow($values: (row nowrap)) {
+  // No Webkit Box fallback.
+  -webkit-flex-flow: $values;
+  -moz-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Order
+//
+// The 'order' property controls the order in which flex items appear within
+// their flex container, by assigning them to ordinal groups.
+//
+// Default: 0
+//
+// http://w3.org/tr/css3-flexbox/#order-property
+
+@mixin order($int: 0) {
+  -webkit-box-ordinal-group: $int + 1;
+  -webkit-order: $int;
+  -moz-order: $int;
+  -ms-flex-order: $int;
+  order: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Grow
+//
+// The 'flex-grow' property sets the flex grow factor. Negative numbers
+// are invalid.
+//
+// Default: 0
+//
+// http://w3.org/tr/css3-flexbox/#flex-grow-property
+
+@mixin flex-grow($int: 0) {
+  -webkit-box-flex: $int;
+  -webkit-flex-grow: $int;
+  -moz-flex-grow: $int;
+  -ms-flex-positive: $int;
+  flex-grow: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Shrink
+//
+// The 'flex-shrink' property sets the flex shrink factor. Negative numbers
+// are invalid.
+//
+// Default: 1
+//
+// http://w3.org/tr/css3-flexbox/#flex-shrink-property
+
+@mixin flex-shrink($int: 1) {
+  -webkit-flex-shrink: $int;
+  -moz-flex-shrink: $int;
+  -ms-flex-negative: $int;
+  flex-shrink: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Basis
+//
+// The 'flex-basis' property sets the flex basis. Negative lengths are invalid. 
+//
+// Values: Like "width" 
+// Default: auto
+//
+// http://www.w3.org/TR/css3-flexbox/#flex-basis-property
+
+@mixin flex-basis($value: auto) {
+  -webkit-flex-basis: $value;
+  -moz-flex-basis: $value;
+  -ms-flex-preferred-size: $value;
+  flex-basis: $value;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox "Flex" (shorthand)
+//
+// The 'flex' property specifies the components of a flexible length: the
+// flex grow factor and flex shrink factor, and the flex basis. When an
+// element is a flex item, 'flex' is consulted instead of the main size
+// property to determine the main size of the element. If an element is
+// not a flex item, 'flex' has no effect.
+//
+// Values: none | <flex-grow> <flex-shrink> || <flex-basis>
+// Default: See individual properties (1 1 0).
+//
+// http://w3.org/tr/css3-flexbox/#flex-property
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+    
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so let's grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -moz-box-flex: $fg-boxflex;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Justify Content
+//
+// The 'justify-content' property aligns flex items along the main axis
+// of the current line of the flex container. This is done after any flexible
+// lengths and any auto margins have been resolved. Typically it helps distribute
+// extra free space leftover when either all the flex items on a line are
+// inflexible, or are flexible but have reached their maximum size. It also
+// exerts some control over the alignment of items when they overflow the line.
+//
+// Note: 'space-*' values not supported in older syntaxes.
+//
+// Values: flex-start | flex-end | center | space-between | space-around
+// Default: flex-start
+//
+// http://w3.org/tr/css3-flexbox/#justify-content-property
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;    
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+  // Shorter version:
+  @mixin flex-just($args...) { @include justify-content($args...); }
+
+//----------------------------------------------------------------------
+
+// Flexbox Align Items
+//
+// Flex items can be aligned in the cross axis of the current line of the
+// flex container, similar to 'justify-content' but in the perpendicular
+// direction. 'align-items' sets the default alignment for all of the flex
+// container's items, including anonymous flex items. 'align-self' allows
+// this default alignment to be overridden for individual flex items. (For
+// anonymous flex items, 'align-self' always matches the value of 'align-items'
+// on their associated flex container.) 
+//
+// Values: flex-start | flex-end | center | baseline | stretch
+// Default: stretch
+//
+// http://w3.org/tr/css3-flexbox/#align-items-property
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+
+//----------------------------------
+
+// Flexbox Align Self
+//
+// Values: auto | flex-start | flex-end | center | baseline | stretch
+// Default: auto
+
+@mixin align-self($value: auto) {
+  // No Webkit Box Fallback.
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Align Content
+//
+// The 'align-content' property aligns a flex container's lines within the
+// flex container when there is extra space in the cross-axis, similar to
+// how 'justify-content' aligns individual items within the main-axis. Note,
+// this property has no effect when the flexbox has only a single line.
+//
+// Values: flex-start | flex-end | center | space-between | space-around | stretch
+// Default: stretch
+//
+// http://w3.org/tr/css3-flexbox/#align-content-property
+
+@mixin align-content($value: stretch) {
+  // No Webkit Box Fallback.
+  -webkit-align-content: $value;
+  -moz-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
+/*
+@include transition(all .3s ease);
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+*/
+@mixin transition($transition...) {
+  $transition-base: all .3s ease;
+    @if length($transition) == 0 {
+      transition: $transition-base;
+      -webkit-transition: $transition-base;
+      -moz-transition: $transition-base;
+      -ms-transition: $transition-base;
+      -o-transition: $transition-base;
+      transition: $transition-base;
+    } @else {
+      -webkit-transition: $transition;
+      -moz-transition: $transition;
+      -ms-transition: $transition;
+      -o-transition: $transition;
+      transition: $transition;
+    }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+@mixin hover {
+  &:hover { @content; }
+}
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+@mixin opacity($opacity: 0.5) {
+  $opacityPercentage: ($opacity * 100);
+　　filter: alpha(opacity=$opacityPercentage);
+  opacity: $opacity;
+}
+@mixin font-size($size, $base: 16) {
+  font-size: $size + px;
+  font-size: ($size / $base) +rem;
+}
+@mixin gradient-text($angle: 45deg, $color: #f82, $amount: 35%) {
+  color: $color;
+  background: -webkit-linear-gradient($angle, $color, adjust-hue($color, $amount));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: inline-block;
+}
+@mixin linear-gradient($top-color, $bottom-color, $opacity) {
+    background: -moz-linear-gradient(top, rgba($top-color, $opacity) 0%, rgba($bottom-color, $opacity) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba($top-color, $opacity) 0%, rgba($bottom-color, $opacity) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba($top-color, $opacity) 0%, rgba($bottom-color, $opacity) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str(rgba($top-color, $opacity))}', endColorstr='#{ie-hex-str(rgba($bottom-color, $opacity))}',GradientType=0 ); /* IE6-9 */
+}
+// @include bg-linear-gradient(#00FFFF,#0080FF,45deg);
+@mixin bg-linear-gradient($color-one,$color-two,$degrees) {
+  background: -moz-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, $color-one), color-stop(100%, $color-two)); /* safari4+,chrome */
+  background: -webkit-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* ie10+ */
+  background: linear-gradient($degrees, $color-one 0%, $color-two 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-one', endColorstr='$color-two',GradientType=1 ); /* ie6-9 */
+}
+
+// @include text-shadow(2px,2px,2px,rgba(0,0,0,.25));
+// @include text-shadow(-1px,-2px,3px,#00FFFF, 1px,2px,3px,#0080FF);
+@mixin text-shadow($x1:2px, $y1:2px, $blur1:5px, $color1:black, $x2:null, $y2:null, $blur2:null, $color2:null){
+  @if ($x2) {
+   text-shadow: $x1 $y1 $blur1 $color1, $x2 $y2 $blur2 $color2; 
+  }
+  @else {
+    text-shadow: $x1 $y1 $blur1 $color1;
+  }
+}
+// @include text-stroke(2px #fff); 
+@mixin text-stroke($args...)
+{
+  -webkit-text-stroke: $args;
+  -moz-text-stroke: $args;
+  -o-text-stroke: $args;
+  -ms-text-stroke: $args;
+  text-stroke: $args;
+}
+// @include border-radius(1em);
+// @include border-radius(25px,5px,25px,5px);
+@mixin border-radius($top-left:10px, $top-right:null, $bottom-right:null, $bottom-left:null){
+  -webkit-border-radius: $top-left $top-right $bottom-right $bottom-left;
+     -moz-border-radius: $top-left $top-right $bottom-right $bottom-left;
+      -ms-border-radius: $top-left $top-right $bottom-right $bottom-left;
+          border-radius: $top-left $top-right $bottom-right $bottom-left;  
+}
+// .placeholder {
+// @include placeholder {
+//     color: #0066CC;
+//     background: #ccffff;
+//   }
+//   }
+// @mixin placeholder() {
+//   input::-webkit-input-placeholder {@content}
+//   input:-moz-placeholder           {@content}
+//   input::-moz-placeholder          {@content}
+//   input:-ms-input-placeholder      {@content}
+// }
+// Animations and keyframes
+// @include keyframes(slide-down) {
+//   0% { opacity: 1; }
+//   90% { opacity: 0; }
+// }
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+// .element {
+//   width: 100px;
+//   height: 100px;
+//   background: black;
+//   @include animation('slide-down 5s 3');
+// }
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+/*
+@include background-opacity(#000, $opacity: 0.3);
+*/
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color;
+    background: rgba($color, $opacity);
+}
+@mixin box($width, $height: null, $radius: null) {
+  width: $width;
+
+  @if $height != null {
+    height: $height;
+  }
+
+  @if $radius != null {
+    border-radius: $radius;
+  }
+}
+@mixin float($side: left) {
+  float: unquote($side);
+  display: inline;
+}
+@mixin float-right {
+  @include float(right);
+}
+@mixin float-left {
+  @include float(left);
+}
+@mixin reset-float($display: block) {
+  float: none;
+  display: $display;
+}
+@mixin centerer {
+  @include absolute($left: 50%, $top: 50%);
+  @include translate(-50%, -50%);
+}
+/// Clamps, aka truncates, multi-line text. Note that non-webkit browsers will
+/// not see the ellipsis ¯\_(ツ)_/¯
+/// @param {Value}          $font-size     - Font size of the text
+/// @param {Unitless Value} $line-height   - Line height of the text; **must be a unitless value**
+/// @param {Number}         $lines-to-show - Number of lines to show
+/// @param {Bool}         $max-height - Height or max-height
+/// @example scss
+/// p {
+///   @include line-clamp($font-size: 16px, $line-height: 1.5, $lines-to-show: 3, $max-height: false);
+/// }
+@mixin line-clamp(
+  $font-size,
+  $line-height,
+  $lines-to-show,
+  $max-height
+) {
+  @if unitless($line-height) == false {
+    $line-height: create-unitless-line-height($font-size, $line-height);
+  }
+
+  display: block; // Fallback for non-webkit browsers
+  display: -webkit-box;
+  // font-size: $font-size;
+  @if $max-height {
+    max-height: ($font-size * $line-height * $lines-to-show); // Fallback for non-webkit browsers
+  } @else {
+    height: ($font-size * $line-height * $lines-to-show); // Fallback for non-webkit browsers
+  }
+  line-height: $line-height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines-to-show;
+}
+
+// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+/// Shorthand mixin for absolute positioning
+/// Serves as an alias for `position(absolute, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+/// Shorthand mixin for relative positioning
+/// Serves as an alias for `position(relative, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+/// Shorthand mixin for fixed positioning
+/// Serves as an alias for `position(fixed, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+@mixin bg($background-image, $background-repeat: no-repeat, $background-size: null, $background-position:0 0, $background-color: null) {
+    background: {
+        image: url($images-url + $background-image);
+        @if $background-repeat != null {
+          repeat: $background-repeat;
+        }
+        @if $background-position != null {
+          position: $background-position;
+        }
+        @if $background-size != null {
+          size: $background-size;
+        }
+        @if $background-color != null {
+          color: $background-color;
+        }
+    }
+}
+
+@mixin boxstyle($display: flex, $justify-content: null , $align-items: null , 
+  $flex-wrap: null, $flex-direction: null) {
+  @if $display != null {
+    @extend %boxstyle_#{$display};
+  }
+  @if $justify-content != null {
+    @extend %boxstyle_justify-content-#{$justify-content};
+  }
+  @if $align-items != null {
+    @extend %boxstyle_align-items-#{$align-items};
+  }
+  @if $flex-wrap != null {
+    @extend %boxstyle_flex-wrap-#{$flex-wrap};
+  }
+  @if $flex-direction != null {
+    @extend %boxstyle_flex-direction-#{$flex-direction};
+  }
+}
+
+// media queries
+
+@mixin Responsive($canvas) {
+  @if $canvas == XS {
+   @media only screen and (min-width: $device_size_mobile) { @content; } 
+  }
+  @else if $canvas == SM {
+   @media only screen and (min-width: $device_size_small) { @content; } 
+  }
+  @else if $canvas == MD {
+   @media only screen and (min-width: $device_size_medium) { @content; } 
+  }
+  @else if $canvas == XL {
+   @media only screen and (min-width: $device_size_large) { @content; } 
+  }
+}
+// This function will return the last item in a list
+@function last ($list) {
+  @return nth($list, length($list));
+}
+
+// This function implements the improved double ampersand algoithm
+@mixin doubly {
+  // at first we need to reference the list of selectors for which
+  // this mixin is called (we will call that "caller selectors" from now on)
+  //
+  // For
+  // p .test, a { @include doubly { /* ... */ }; }
+  // this will be
+  // (p .test, a)
+  $caller-selectors: &;
+
+  // We need to track whether the last selector for all caller selectors
+  // is the same. If it isn't we need to perform some special handling
+  $has-same-last-caller-selector: true;
+
+  // For checking whether all last selectors are the same. Store the first one
+  // and compare all other last selectors to it.
+  $previous-last-selector: last(nth($caller-selectors, 1));
+
+  // A list of prepared separators. If the last selectors are not the same,
+  // we need to create our own block with the prepared selectors.
+  $prepared-selectors: ();
+
+  // Loop through all caller selectors to
+  // - check for the last
+  // - generate prepared selectors
+  @each $selector in $caller-selectors {
+    $last: last($selector);
+    @if ($previous-last-selector != $last) {
+      $has-same-last-caller-selector: false;
+    }
+
+    // generate prepared selector
+    $prepared-selectors: append($prepared-selectors, #{$selector} + #{$last}, comma);
+  }
+
+
+  @if ($has-same-last-caller-selector) {
+    // if all selectors have the same last selector
+    // we can just use the regular `&` functionality
+    & + #{$previous-last-selector} {
+      @content;
+    } 
+  } @else {
+    // If not all selectors are the same, we need to render a completely
+    // own block
+    @at-root #{$prepared-selectors} {
+      @content;
+    }
+  }
+}
+@mixin p-el($el, $el-width: null, $el-height: null) {
+  @if $el == "before" or $el == "after" {
+    &:#{$el} {
+      @extend %pseudos;
+      @if $el-width != null {
+        width: $el-width;
+      }
+      @if $el-height != null {
+        height: $el-height;
+      }
+      @content;
+    }
+  }
+  @else {
+    @warn "`#{$el}` is not a valid pseudo-element.";
+  }
+}
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+// ------------------------------------------------
+// Expressive BEM mixins (for BEM and namespacing)
+//-------------------------------------------------
+
+//---------------------------------------------
+// Creates a new, top-level Block
+// --------------------------------------------
+// If a type (e.g. component, module, utility)
+// is given, it will auto-generate a namespaced
+// class that adheres to Harry Roberts' post
+// on namespaced BEM classes.
+// If given: +new(product-item, component)
+// Produces: .c-product-item
+// Remember, the $type is optional.
+@mixin new ($name, $type: null) {
+  // @at-root
+    // @if $type != null {
+    //   $namespace: str-slice($type, 0, 1);
+    //   .#{$namespace}-#{$name} {
+    //     @content;
+    //   }
+    // }
+    // @else {
+    //   .#{$name} {
+    //     @content;
+    //   }
+    // }
+}
+//---------------------------------------------
+// Creates an Element
+//---------------------------------------------
+// If given: 
+// +new(product-item, component)
+//  +has(title)
+// 
+// Produces: 
+// .c-product-item {}
+// .c-product-item__title {}
+//
+// If given: 
+// +new(person)
+//   +when(female)
+//    +has(hand, person) refers to the parent scope
+// 
+// Produces: 
+// .person {}
+// .person--female {}
+// .person--female .person__hand {}
+//
+@mixin has ($name, $childOf: '') {
+  @if ($childOf != '') {
+    .#{$childOf}__#{$name} {
+      @content;
+    }
+  }
+  @else {
+    @at-root
+    #{&}__#{$name} {
+      @content;
+    }
+  }
+}
+//----------------------------------------------
+// Creates a Modifier
+// ---------------------------------------------
+// If given: 
+// +new(person)
+//   +when(female)
+// 
+// Produces: 
+// .person {}
+// .person--female {}
+@mixin when ($name) {
+  @at-root
+    #{&}--#{$name}{
+      @content;
+    }
+}
+//-----------------------------------------------
+// Creates a behaviorial State
+// -----------------------------------------
+// If given: 
+// +new(menu, component)
+//   +has(item)
+//     +if(active)
+// 
+// Produces: 
+// .c-menu {}
+// .c-menu__item {}
+// .c-menu__item.is-active {}
+@mixin if-its ($state) {
+  &.is-#{$state}{
+    @content;
+  }
+}
+@mixin if ($state) {
+  @include if-its($state){
+    @content;
+  }
+}
+//-----------------------------------------------
+// Creates an ownership State
+//-----------------------------------------------
+// If given: 
+// +new(menu, component)
+//   +has(item)
+//     +with(dropdown)
+// 
+// Produces: 
+// .c-menu {}
+// .c-menu__item {}
+// .c-menu__item.has-dropdown {}
+@mixin got ($something) {
+  &.has-#{$something} {
+    @content;
+  }
+}
+@mixin with ($something) {
+  @include got($something) {
+    @content;
+  }
+}
+@mixin magic-border($width, $color, $duration, $direction){
+  position:relative;
+    &:before{
+      content:'';
+      position:absolute;
+      width:calc(100% + #{$width * 2});
+      height:calc(100% + #{$width * 2});
+      top:calc(#{$width}/-1);
+      left:calc(#{$width}/-1);
+      background:linear-gradient(to right, $color 0%, $color 100%), linear-gradient(to top, $color 50%, transparent 50%), linear-gradient(to top, $color 50%, transparent 50%), linear-gradient(to right, $color 0%, $color 100%), linear-gradient(to left, $color 0%, $color 100%);
+      background-size:100% $width, $width 200%, $width 200%, 0% $width, 0% $width;
+      background-position:50% 100%, 0% 0%, 100% 0%, 100% 0%, 0% 0%;
+      background-repeat:no-repeat, no-repeat;
+      transition:transform $duration ease-in-out, background-position $duration ease-in-out, background-size $duration ease-in-out;
+      transform:scaleX(0) rotate(180deg * $direction);
+      transition-delay:$duration*2, $duration, 0s;
+    }
+    &:hover{
+      &:before{
+        background-size:200% $width, $width 400%, $width 400%, 55% $width, 55% $width;
+        background-position:50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+        transform:scaleX(1) rotate(180deg * $direction);
+        transition-delay:0s, $duration, $duration*2;
+      }
+    }
+}
+
+@mixin magic-border-mask($width, $duration, $background, $direction){
+  position:relative;
+    &:before{
+      content:'';
+      position:absolute;
+      width:calc(100% + #{$width * 2});
+      height:calc(100% + #{$width * 2});
+      top:calc(#{$width}/-1);
+      left:calc(#{$width}/-1);
+      mask:linear-gradient(to right, #000 0%, #000 100%), linear-gradient(to top, #000 50%, transparent 50%), linear-gradient(to top, #000 50%, transparent 50%), linear-gradient(to right, #000 0%, #000 100%), linear-gradient(to left, #000 0%, #000 100%);
+      mask-size:100% $width, $width 200%, $width 200%, 0% $width, 0% $width;
+      mask-position:50% 100%, 0% 0%, 100% 0%, 100% 0%, 0% 0%;
+      mask-repeat:no-repeat, no-repeat;
+      transition:transform $duration ease-in-out, mask-position $duration ease-in-out, mask-size $duration ease-in-out;
+      transform:scaleX(0) rotate(180deg * $direction);
+      transition-delay:$duration*2, $duration, 0s;
+      background:$background;
+    }
+    &:hover{
+      &:before{
+        mask-size:200% $width, $width 400%, $width 400%, 55% $width, 55% $width;
+        mask-position:50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+        transform:scaleX(1) rotate(180deg * $direction);
+        transition-delay:0s, $duration, $duration*2;
+      }
+    }
+}

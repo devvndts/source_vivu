@@ -1,0 +1,44 @@
+@php
+    $co_hoi_kinh_doanh = get_static('co-hoi-kinh-doanh', $lang);
+    $name = $co_hoi_kinh_doanh->{"ten$lang"};
+    $desc = $co_hoi_kinh_doanh->{"mota$lang"};
+    $url = url('co-hoi-kinh-doanh');
+@endphp
+<div class="w-full relative left-0 top-0">
+        <div class="lg:px-20 px-4 mb-14 py-14 bg-[url(../pts/cohoi-bg.png)] bg-no-repeat bg-cover rounded-[5px] overflow-hidden">
+            <div class="flex flex-wrap md:flex-nowrap justify-between">
+                <div class="w-full md:w-[48%] mb-4 revealOnScroll" data-animation="animate__zoomIn">
+                    <div class="text-white font-bold uppercase text-xl lg:text-[40px]">{{ $name }}</div>
+                    <div class="text-white text-sm my-5 line-clamp-10">{!! $desc !!}</div>
+                    <x-shared.readmore href="{{ $url }}" title="Tìm hiểu thêm" >
+                    </x-shared.readmore>
+                </div>
+                <div class="w-full md:w-[48%] revealOnScroll" data-animation="animate__zoomIn">
+                    <div class="md:py-[37px] p-3 md:px-[45px] bg-white rounded-[5px]">
+                        <div class="text-xl lg:text-[32px] font-bold uppercase text-center text-primary mb-4 ">Đăng kí nhận tư vấn</div>
+                        <x-buk-form id="frm_newsletter" class="form-newsletter validation-newsletter" action="{{ route('allpage') }}" novalidate>
+                            <x-buk-input type="hidden" name="allpage_type" value="dangkynhantin" />
+                            <x-buk-input type="hidden" name="dangkynhantin[type]" value="dangkynhantin" />
+                            <x-forms.group class="[&]:mb-4">
+                                <x-buk-input class='form-control border-t-transparent border-x-transparent rounded-none px-0' type="text" placeholder="{{ __('Nhập họ và tên') }}" name="dangkytuvan[hoten]" required />
+                                <x-alerts.alert >{{ __('Vui lòng nhập họ và tên') }}</x-alerts.alert>
+                            </x-forms.group>
+                            <x-forms.group class="[&]:mb-4">
+                                <x-buk-input class='form-control border-t-transparent border-x-transparent rounded-none px-0' type="email" placeholder="{{ __('Nhập email') }}" name="dangkytuvan[email]" required />
+                                <x-alerts.alert >{{ __('Vui lòng nhập địa chỉ email') }}</x-alerts.alert>
+                            </x-forms.group>
+                            <x-forms.group class="[&]:mb-4">
+                                <x-buk-input class='form-control border-t-transparent border-x-transparent rounded-none px-0' type="tel" placeholder="{{ __('Nhập điện thoại') }}" name="dangkytuvan[phone]" required />
+                                <x-alerts.alert >{{ __('Vui lòng nhập điện thoại') }}</x-alerts.alert>
+                            </x-forms.group>
+                            <div class="flex justify-center">
+                                <div class="inline-flex border border-secondary bg-secondary duration-300 rounded-[50px]  items-center py-3 px-6 transition-all">
+                                    <x-buk-input type="submit" name="submit-nhantin" value="{{ __('Gửi thông tin') }}" class="btn !shadow-none !outline-none btn-primary p-0 !bg-transparent [&]:leading-none text-sm text-black uppercase font-normal h-[24px] [&]:mb-0 [&]:mx-0 "  />
+                                </div>
+                            </div>
+                        </x-buk-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,195 @@
+@include render('menu_left') {
+.menu-left{
+    @include z-index(share-type);
+    // @include bg("menu-left.png",$background-repeat: no-repeat,$background-size: cover,$background-position: 0 0);
+    @include float-left;
+    position: relative;
+    width: percentage(300/$max);
+    @include e(title){
+        @include setFont(15px, #fff, 700, null, null);
+
+        line-height: 40px;
+        text-align: center;
+        background-color: var(--theme);
+        text-transform: uppercase;
+    }
+    &-list{
+        @extend %reset-list;
+        @include absolute($left: 0px, $top: 100%);
+        width: 100%;
+        max-height: 480px;
+        min-height: 480px;
+        overflow-y: auto;
+        background-color: #ececec;
+    }
+
+    &-sublist{
+        @extend %reset-list;
+        @include boxShadow(0 3px 5px 0 rgba(0,0,0,.2));
+        @include transform-origin(0 0 0);
+        @include transition(all 0.4s ease 0s);
+        @include scaleY(0);
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        min-width: 230px;
+        background-color: #f2f2f2;
+        left: 100%;
+        top: 0;
+    }
+    &-subitem{
+        &__link{
+            @include setFont(14px, #636363, null, null);
+            line-height: 1;
+            text-transform: uppercase;
+            display: block;
+            padding: 13px 1em 13px 2em;
+            position: relative;
+            @include p-el(before, $el-width: 5px, $el-height: 5px){
+              @include absolute($left: 10px, $top: 17px);
+              border-radius: 100%;
+              background-color: $theme;
+            }
+        }
+        @include doubly{
+            border-top: 1px dotted #c2c2c2;
+        }
+    }
+    @include media("<=medium"){
+        display: none;
+    }
+}
+.menu-left-item{
+    $this: &;
+    &__link{
+        @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: null, $gutter: null);
+        position: relative;
+        padding: 13px 1em 13px 1em;
+        @include p-el(before, $el-width: null, $el-height: null){
+          @include absolute($right: 1em, $top: 10px);
+          @include setFont(15px, #000, 900, $font-awesome, null);
+          content: "\f054";
+        }
+        i{
+            // font-size: 7px;
+            // color: #828282;
+            // margin: 10px;
+        }
+    }
+    &__left{
+        @include flex(1);
+    }
+    &__name{
+        @include setFont(14px, #000, 700, null);
+        @include transition;
+        text-transform: uppercase;
+        display: block;
+        line-height: 1;
+    }
+    @include doubly{
+        // border-top: 1px dashed #bebebe;
+        #{$this}__link{
+            &::after{
+                @include box(100%, 1px);
+                @include absolute($left: 0px, $top: 0px);
+                content: "";
+                border-top: 1px dashed #c2c2c2;
+            }
+
+        }
+    }
+    @include hover{
+        &>ul{
+            @include scaleY(1);
+            visibility: visible;
+            opacity: 1;
+        }
+        #{$this}__name{
+            color: #f00;
+        }
+    }
+}
+// .menu-left{
+//     @include z-index(share-type);
+//     width: percentage(250/$max-width);
+//     background-color: #fff;
+//     border: 1px solid #e2e1e1;
+//     position: relative;
+
+//     &-list{
+//         @extend %reset-list;
+//         max-height: 410px;
+//         overflow-y: auto;
+        
+//     }
+
+//     &-sublist{
+//         @extend %sub-menu-list;
+//         left: calc(100% - 9px); 
+//         width: 100%;
+//     }
+//     &-subitem{
+//         &__link{
+//             @include grid(flex, $flex-wrap: null, $justify-content: space-between, 
+//               $align-items: center, $gutter: null);
+//             @include setFont(15px, #333, 400, $text-font);
+//             min-height: 44.5px;
+//             padding: 0 7px;
+//         }
+//         @include doubly{
+//             border-top: 1px solid #e2e1e1;
+//         }
+//     }
+//     @include media("<=medium"){
+//         display: none;
+//     }
+// }
+// .menu-left-item{
+//     $this: &;
+//     position: static;
+//     margin-right: 4px;
+//     &__link{
+//         @include grid(flex, $flex-wrap: null, $justify-content: space-between, 
+//           $align-items: center, $gutter: null);
+//         min-height: 44.5px;
+//         padding-left: 20px;
+//         i{
+//             color: $theme;
+//             font-size: 9px;
+//             margin-right: 10px;
+//         }
+//     }
+//     &__left{
+//         @include grid(flex, $flex-wrap: null, $justify-content: null, 
+//           $align-items: center, $gutter: null);
+//         @include flex(1);
+//     }
+//     // &__figure{
+//     //     @include box(30px,30px);
+//     //     position: relative;
+//     //     margin-bottom: 0;
+//     // }
+//     // &__img{
+//     //     @extend %img-fill;
+//     //     object-fit: scale-down;
+//     //     object-position: center center;
+//     // }
+//     &__name{
+//         @include setFont(15px, #333, 400, $text-font);
+//         @include transition;
+//     }
+//     @include doubly{
+//         border-top: 1px solid #e2e1e1;
+//     }
+//     @include hover{
+//         &>ul{
+//             @include scaleY(1);
+//             visibility: visible;
+//             opacity: 1;
+//         }
+//         #{$this}__name{
+//             color: $theme2;
+//         }
+//     }
+// }
+}

@@ -1,0 +1,22 @@
+
+.widget-toc .toc-title {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.widget-toc {
+    background: #efebeb;
+    padding: 3px 16px 3px 5px;
+    border: 1px solid #ccc;
+    width: auto;
+    display: inline-block;
+    padding: 10px;
+}
+
+.widget-toc ol ol {
+    padding-left: 30px !important;
+}
+
+.widget-toc ol {
+    padding-left: 20px !important;
+}

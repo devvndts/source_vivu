@@ -1,0 +1,60 @@
+$imports: (
+  component: (
+    'title',
+    // 'lightbox',
+    'slider',
+    // 'cart-sidebar',
+    // 'breadcrumb',
+    // 'form',
+    // 'tag',
+    // 'comment',
+    'search',
+    // 'pagination',
+    'social',
+    // 'newsletter',
+    // 'videomain',
+    // 'rotatecircle',  
+    'button'
+  ),
+  layout: (
+    // 'dmsp',
+    // 'carousel',
+    // 'widget',
+    // 'fullscreen_navigation',
+    // 'header_verticle',
+    'navigation',
+    // 'doitac',
+    // 'dmspbox',
+    // 'menu_left',
+    // 'footer_baiviet',
+    // 'copyright', 
+    // 'thongke',
+    'header',
+    // 'footer',
+  ),
+  base: (
+      // 'base',
+      'animations',
+      // 'typography',
+      'helpers', 
+      // 'default',
+      'style',
+      'custom',
+      'responsive'
+    ),
+  page: (
+    // 'giohang',
+    // 'checkouts',
+    // 'album',
+    // 'video',
+    // 'news',
+    // 'news-verticle',
+    // 'product',
+    // 'product-detail'
+  )
+);
+// $import-pages: !default;// news-verticle album giohang
+// $import-layout: !default;// doitac, dmsp, dmspbox, menu_left, widget
+// $import-components: slider mxh newsletter search !default;// slider, search, mxh, newsletter, videomain, tag
+// @if index($import-pages, giohang) {
+//     }

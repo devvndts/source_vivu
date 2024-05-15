@@ -1,0 +1,111 @@
+@if(isset($config[$type]['select']) && $config[$type]['select']==true)
+    <div class="form-group row">
+        <div class="form-group col-md-4 col-sm-6">
+            <label>Ngày bắt đầu:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                </div>
+                <input type="text" class="float-right form-control" name="data[begindate]" id="ngaybatdau" value="{{(isset($rowItem['begindate'])) ? $rowItem['begindate'] : ''}}">
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+            <label>Thời gian bắt đầu:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                </div>
+                <input type="text" class="float-right form-control" name="data[begintime]" id="thoigianbatdau" value="{{(isset($rowItem['begintime'])) ? $rowItem['begintime'] : ''}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-4 col-sm-6">
+            <label>Ngày kết thúc:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                </div>
+                <input type="text" class="float-right form-control" name="data[enddate]" id="ngayketthuc" value="{{(isset($rowItem['enddate'])) ? $rowItem['enddate'] : ''}}">
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-sm-6">
+            <label>Thời gian kết thúc:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                </div>
+                <input type="text" class="float-right form-control" name="data[endtime]" id="thoigianketthuc" value="{{(isset($rowItem['endtime'])) ? $rowItem['endtime'] : ''}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="d-block" for="giasale">Giá quy ước:</label>
+        <div class="input-group">
+            <input type="text" class="form-control format-price gia_cu" name="data[giasale]" id="giasale" placeholder="Giá sale" value="{{$rowItem['giasale']}}">
+            <div class="input-group-append">
+                <div class="input-group-text"><strong>VNĐ</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="d-block" for="giasale">Số lượng:</label>
+        <div class="input-group">
+            <input type="text" class="float-right form-control" name="data[tongsl]" id="tongsl" value="{{(isset($rowItem['tongsl'])) ? $rowItem['tongsl'] : ''}}">
+        </div>
+    </div>
+
+    <div class="form-group col-xl-6 col-sm-4">
+        <label class="d-block" for="id_list">Chọn sản phẩm Flashsale:</label>
+        {!! Helper::get_ajax_product('product', 'product', 'product', $rowItem['id_product']) !!}
+    </div>
+    <div class="form-group col-xl-12 col-sm-12">
+        <div id="showProductSelect">
+            <div class="flashsale_containerB">
+                @foreach($array_product as $k=>$v)
+                    <div class="flashsale_itemB">
+                        <a class="flashsale_imgB"><img class="rounded img-upload" src="{{ (isset($v['photo']))?config('config_upload.UPLOAD_PRODUCT').$v['photo']:'' }}" onerror=src="{{asset('img/noimage.png')}}" alt="Alt Photo"/></a>
+                        <h2 class="flashsale_nameB"><a>{{ $v['ten'] }}</a></h2>
+                        <div class="flashsale_infoB">
+                            <!--<label>Số lượng:</label>
+                            <input type="text" name="soluong[]" value="<?=$v['soluong']?>">-->
+                            <input type="hidden" name="id[]" value="{{$v['id']}}">
+                            <input type="hidden" name="name[]" value="{{$v['ten']}}">
+                            <input type="hidden" name="photo[]" value="{{$v['photo']}}">
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
+
+<!--js thêm cho mỗi trang-->
+@push('js')
+<script>
+    $(document).ready(function(){
+        $('#ngaybatdau').datetimepicker({
+            timepicker:false,
+            format:'d/m/Y'
+        });
+
+        $('#ngayketthuc').datetimepicker({
+            timepicker:false,
+            format:'d/m/Y'
+        });
+
+        $('#thoigianbatdau').datetimepicker({
+            datepicker:false,
+            format:'H:i'
+        });
+
+        $('#thoigianketthuc').datetimepicker({
+            datepicker:false,
+            format:'H:i'
+        });
+    });
+</script>
+@endpush

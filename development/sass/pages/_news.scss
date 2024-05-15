@@ -1,0 +1,115 @@
+@include render('news') {
+    .news{
+        $this: &;
+        &-grid{
+            @include grid(flex, $flex-wrap: wrap, $justify-content: null, 
+              $align-items: null, $gutter: 2%);
+        }
+        @include e(item){
+            @include grid-col($col: 6, $grid-columns: 12, $gutter: 2%);
+        }
+        @include e(link){
+            @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, 
+              $align-items: null, $gutter: null);
+            // background-color: #fff;
+            @include hover{
+                #{$this}__name{
+                    color: #f00;
+                }
+            }
+        }
+        @include e(image){
+            width: 36%;
+            margin-bottom: 10px;
+        }
+        @include e(img){
+            background-color: #eee;
+            width: 100%;
+        }
+        @include e(body){
+            @include flex(1);
+            margin-left: 1em;
+        }
+        @include e(name){
+            @include setFont(16px, var(--color-title-main), 700, null);
+            @include transition;
+            
+        }
+        @include e(desc){
+            @include setFont(14px, #333, 400, null);
+            @include line-clamp($font-size: 14px, $line-height: 1.5, $lines-to-show: 3, $max-height: true);
+        }
+        @include e(date){
+            @include setFont(14px, lighten(#333, 30), 400, null);
+        }
+        @include render('news-verticle') {
+            @include m(verticle){
+                @include e(item){
+                    @include grid-col($col: 4, $grid-columns: 12, $gutter: 2%);
+                }
+                @include e(link){
+                    text-align: center;
+                }
+                @include e(image){
+                    width: 100%;
+                }
+                @include e(body){
+                    margin-left: 0;
+                }
+            }
+            @include m(col-4){
+                @include e(item){
+                    @include grid-col($col: 3, $grid-columns: 12, $gutter: 2%);
+                }
+                @include e(image){
+                    @include aspect-ratio(1,1 );
+                }
+                @include e(img){
+                    @extend %img-center;
+                }
+            }
+        }
+        @include media("<=440px"){
+            @include e(image){
+                width: 100%;
+            }
+            @include e(body){
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+        @include media("<=850px"){
+            @include e(item){
+                @include grid-col($col: 12, $grid-columns: 12, $gutter: 2%);
+            }
+            @include m(verticle){
+                @include e(item){
+                    @include grid-col($col: 6, $grid-columns: 12, $gutter: 2%);
+                }
+            }
+        }
+        @include media("<=425px"){
+            @include m(verticle){
+                @include e(item){
+                    @include grid-col($col: 12, $grid-columns: 12, $gutter: 2%);
+                }
+            }
+        }
+    }
+    .giaiphap-item{
+        a{
+          display: block;
+          figure{
+            img{}
+          }
+          h5{
+            @include setFont(16px, #000, 500, null, null);
+            @include line-clamp($font-size: 16px, $line-height: 1.5, $lines-to-show: 2, $max-height: false);
+          }
+          p{
+            @include setFont(14px, #000, 400, null, null);
+            @include line-clamp($font-size: 14px, $line-height: 1.5, $lines-to-show: 3, $max-height: false);
+          }
+        }
+    }
+}

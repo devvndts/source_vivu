@@ -1,0 +1,132 @@
+/*Swiper*/
+.swiper{
+    .swiper-slide{
+        @apply hidden;
+    }
+    &.swiper-initialized{
+        .swiper-slide{
+            @apply block;
+        }
+    }
+    .swiper-pagination-current{
+        @apply text-base text-[#B3B3B3];
+    }
+    .swiper-pagination-total{
+        @apply text-xs text-secondary;
+    }
+}
+body .swiper-button-next, body .swiper-button-prev{
+    @apply text-white transition-all bg-black rounded-sm bg-opacity-30 w-11 h-11 hover:bg-opacity-60;
+}
+body .swiper-button-next::after, body .swiper-button-prev::after{
+    @apply text-2xl;
+}
+body .swiper-pagination-bullet-active{
+    @apply bg-primary;
+}
+/*Slick*/
+body .slick-prev, body .slick-next {
+    @apply text-white transition-all bg-black rounded-sm bg-opacity-30 w-11 h-11 hover:bg-opacity-60 hover:!bg-black hover:text-white ;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+    body .slick-prev, body .slick-next {
+        @apply transition-none;
+    } 
+}
+body .slick-prev::before, body .slick-next::before {
+    @apply text-2xl leading-8 tracking-normal !normal-case;
+    font-family:swiper-icons;
+    font-variant: initial;
+}
+body .slick-prev.slick-disabled::before, body .slick-next.slick-disabled::before {
+    @apply opacity-100;
+}
+
+body .slick-prev {
+    @apply left-5;
+    &::before{
+        content: 'prev';
+    }
+}
+
+body .slick-next {
+    @apply right-5;
+    &::before{
+        content: 'next';
+    }
+}
+.progress-round__wrap,.progress2-round__wrap{
+    @apply w-[44px] h-[44px];
+    .progress{
+        @apply w-[44px] h-[44px];
+    }
+}
+.vegapedia-slick-dots{
+    .slick-dots{
+        @apply text-left w-[calc(100%_-_60px)] relative bottom-auto;
+        li{
+            &.slick-active{
+                button{
+                    &:before{
+                        @apply text-xs text-white bg-white border-white opacity-100;
+                    }
+                }
+            }
+            button{
+                &:before{
+                    @apply text-xs text-transparent border-2 rounded-full opacity-100 border-secondary;
+                }
+            }
+        }
+    }
+}
+.progressBarContainer {
+    position: absolute;
+    bottom: 20px;
+    width:300px;
+    left:150px;
+}
+.progressBarContainer div {
+    display: block;
+    width: 30%;
+    padding: 0;
+    cursor: pointer;
+    margin-right: 5%;
+    float: left;
+    color: white;
+}
+.progressBarContainer div:last-child {
+    margin-right: 0;
+}
+.progressBarContainer div span.progressBar {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: block;
+}
+.progressBarContainer div span.progressBar .inProgress {
+    background-color: rgba(255, 255, 255, 1);
+    width: 0%;
+    height: 4px;
+}
+#svg circle {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+    stroke: #666;
+    stroke-width: 1em;
+}
+#svg #bar {
+    stroke: #FF9F1E;
+}
+.progress circle {
+    fill: transparent;
+    stroke: #75c154;
+    stroke-width: 4;
+}
+/*Slick custom*/
+body .slick-custom-section .slick-prev, body .slick-custom-section  .slick-next {
+    @apply rounded-full bg-primary hover:!bg-primary;
+    &::before{
+        @apply text-lg;
+    }
+}

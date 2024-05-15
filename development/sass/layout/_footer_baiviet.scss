@@ -1,0 +1,44 @@
+@include render('footer_baiviet') {
+  .footer{
+    @include e("baiviet"){
+      width: percentage(calc(220/$max3));
+      position: relative;
+      @include doubly{
+      }
+
+      ul{
+        @extend %reset-list;
+        // @include grid(flex, $flex-wrap: wrap, $justify-content: null, $align-items: null, $gutter: null);
+        li{
+          margin-bottom: 15px;
+          @include doubly(){
+            // border-top: 1px solid rgba(#fff, .2);
+          }
+
+          a, span{
+            @include transition;
+            @include setFont(16px, #333333, 400, null, null);
+            position: relative;
+            display: inline-block;
+            padding: 0;
+            &[href]{
+              @include hover{
+                // color: #ff0;
+                padding-left: 10px;
+              }
+            }
+            // @include p-el(before, $el-width: 8px, $el-height: 8px){
+            //   content: url($images-url+'fa-right.png');
+            //   display: inline-block;
+            //   position: relative;
+            //   margin: 0 10px 0px 0;
+              // background-color: #fff;
+              // border: 1px solid #000;
+              // border-radius: 100%;
+            // }
+          }
+        }
+      }
+    }
+  }
+}

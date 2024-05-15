@@ -1,0 +1,76 @@
+@include render('animations') {
+  @keyframes h-alo-ring-ring{
+    0%{transform:rotate(0deg) scale(1) skew(1deg)}
+    10%{transform:rotate(-25deg) scale(1) skew(1deg)}
+    20%{transform:rotate(25deg) scale(1) skew(1deg)}
+    30%{transform:rotate(-25deg) scale(1) skew(1deg)}
+    40%{transform:rotate(25deg) scale(1) skew(1deg)}
+    50%{transform:rotate(0deg) scale(1) skew(1deg)}
+    100%{transform:rotate(0deg) scale(1) skew(1deg)}
+  }
+  @keyframes marquee {
+    0% {
+      right: 0;
+      @include transform(translateX(100%));
+    }
+    100% {
+      right: 0;
+      @include transform(translateX(-100%));
+    }
+  }
+  @include keyframes(spin1) {
+    0% { 
+      @include rotate(0);
+    }
+    100% { 
+      @include rotate(360deg);
+    }
+  }
+  @include keyframes(spin2) {
+    0% { 
+      @include rotate(72deg);
+    }
+    100% { 
+      @include rotate(-288deg);
+    }
+  }
+  @include keyframes(spin3) {
+    0% { 
+      @include rotate(-144deg);
+    }
+    100% { 
+      @include rotate(216deg);
+    }
+  }
+  @include keyframes(spin4) {
+    0% { 
+      @include rotate(216deg);
+    }
+    100% { 
+      @include rotate(-144deg);
+    }
+  }
+  @include keyframes(hvr-bob) {
+    0% {
+      @include translate(0,-8px);
+    }
+
+    50% {
+      @include translate(0,-4px);
+    }
+
+    100% {
+      @include translate(0,-8px);
+    }
+  }
+  @include keyframes(hvr-bob-float) {
+      100% {
+        @include translate(0,-8px);
+      }
+  }
+  @include keyframes(blinker) {
+      0% { opacity: 1.0; }
+      50% { opacity: 0.0; }
+      100% { opacity: 1.0; }
+  }
+}

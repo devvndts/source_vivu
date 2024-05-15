@@ -1,0 +1,192 @@
+.category-grid {  
+    $gut-col: percentage(calc(516 / $max));
+    $gut-col2: percentage(calc(360 / $max));
+    $gut-row: percentage(calc(260 / 884));
+    $gut-row2: percentage(calc(332 / 884));
+
+    display: grid;
+    grid-template-columns: $gut-col $gut-col2 $gut-col2;
+    grid-template-rows: $gut-row $gut-row2 $gut-row;
+    gap: 18px 18px; 
+    grid-auto-flow: row;
+    grid-template-areas:
+      "gri1 gri4 gri4"
+      "gri1 gri2 gri3"
+      "gri5 gri5 gri5";
+
+    .gri1 { 
+        grid-area: gri1; 
+        .category-grid-item {
+            .category-grid-item__info {
+                h3{
+                    max-width: 200px;
+                }
+            }
+        }
+    }
+    .gri2 { 
+        grid-area: gri2; 
+        .category-grid-item {
+            .category-grid-item__info {
+                @include absolute($left: 0px, $top: unset, $bottom: 30px);
+                @include translate(0,0);
+            }
+        }
+    }
+    .gri3 { 
+        grid-area: gri3; 
+        .category-grid-item {
+            .category-grid-item__info {
+                @include absolute($left: 0px, $top: unset, $bottom: 30px);
+                @include translate(0,0);
+            }
+        }
+    }
+    .gri4 { grid-area: gri4; }
+    .gri5 { 
+        grid-area: gri5; 
+        .category-grid-item {
+            .category-grid-item__info {
+                padding-left: 400px;
+            }
+        }
+    }
+
+    &-item{
+        @include grid( flex, $flex-wrap: null, $justify-content: null,
+                       $align-content: null, $gutter: null);
+        height: 100%;
+        position: relative;
+        figure{
+            @include grid( flex, $flex-wrap: null, $justify-content: null,
+                       $align-items: null, $gutter: null);
+            height: 100%;
+            width: 100%;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        @include e(info){
+            @include absolute($left: 0px, $top: 50%);
+            @include translate(0,-50%);
+            padding-left: 17px;
+            h3{
+                font-weight: 700;
+                font-size: 24px;
+                text-transform: uppercase;
+                color: #101010;
+                // margin-bottom: 20px;
+            }
+        }
+    }
+  }
+  
+  /*product-new-home start*/
+  .product-new{
+    &-home{
+        padding: 70px 0;
+    }
+    &-items{}
+    &-item{
+        @include grid( flex, $flex-wrap: null, $justify-content: start,
+                       $align-items: null, $gutter: null);
+        @include e(box){
+            @include grid( flex, $flex-wrap: wrap, $justify-content: space-between,
+            $align-items: center, $gutter: null);
+        }
+        @include e(image){
+            position: relative;
+            // padding: 10px;
+            .new-bg{
+
+            }
+            figure{
+                @include absolute($right: 30px);
+                img{}
+            }
+        }
+        @include e(info){
+            // padding: 10px;
+            flex: 1;
+            figure{
+                img{
+
+                }
+            }
+        }
+        &:nth-child(even){
+            // justify-content: end;
+        }
+    }
+  }
+  /*product-new-home end*/
+
+  /*brand-story start*/
+  .brand-story{
+    &-wrap{
+        @include grid( flex, $flex-wrap: wrap, $justify-content: space-between,
+                       $align-items: center, $gutter: null);
+    }
+    @include e(image){
+        // width: percentage(calc(615 / $max));
+    }
+    @include e(info){
+        // @include flex(1);
+    }
+    &.feedback{
+        .brand-story__image{
+            width: percentage(calc(590 / $max));
+        }
+    }
+  }
+  /*brand-story end*/
+
+  /*partner-home start*/
+  .partner{
+    &-home{}
+    &-item{
+        a{
+            @include aspect-ratio(157,69 );
+            img{
+                @extend %img-center;
+            }
+        }
+    }
+  }
+  /*partner-home end*/
+
+  /*news-article-home start*/
+  .news-article-home{
+    &-wrap{}
+    .news-home{
+        // width: percentage(calc(636 / $max));
+    }
+  }
+  /*news-article-home end*/
+
+  /*product-image-home start*/
+  .product-image-home{
+    &-head{}
+    &-body{}
+    @include e(main-img){
+        width: percentage(calc(406 / $max));
+    }
+    @include e(sub-img){}
+  }
+  /*product-image-home end*/
+  /*cretiria start*/
+  .cretiria{
+    &-home{}
+    &-items{}
+    &-item{
+        @include e(image){
+            background: linear-gradient(90deg, #B78260 -14.95%, #815030 66.53%);
+            figure{
+                img{}
+            }
+        }
+    }
+  }
+  /*cretiria end*/
+  

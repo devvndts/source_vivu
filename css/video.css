@@ -1,0 +1,16 @@
+.boxvideo-category{padding-bottom: 25px;border-bottom: 1px solid #ebebeb;margin-bottom: 25px;}
+.boxvideo-category:last-child{border-bottom: none;}
+.boxvideo-category-title{font-size: 20px; text-transform: capitalize; font-weight: bold;margin-bottom: 20px;}
+.post-video-items .box-post-name{margin: 10px 0 5px 0;}
+.post-video-items .box-post-name a{text-transform: capitalize;font-weight: bold;}
+.post-video-items .box-post-img { border-radius: 2px;}
+.post-video-items .box-post-date{font-size: 13px;}
+
+.boxvideo-category .video__owl .owl-prev{position: absolute; top: 18%; left: -25px;background: #fff !important; border: 1px solid #ebebeb !important; box-shadow: 0px 0px 5px #ebebeb; width: 40px; height: 40px; opacity: 1; border-radius: 50%; font-size: 30px !important; display: flex; justify-content: center; align-items: center;cursor: pointer;}
+.boxvideo-category .video__owl .owl-next{position: absolute; top: 18%; right: -25px;background: #fff !important; border: 1px solid #ebebeb !important; box-shadow: 0px 0px 5px #ebebeb; width: 40px; height: 40px; opacity: 1; border-radius: 50%; font-size: 30px !important; display: flex; justify-content: center; align-items: center;cursor: pointer;}
+.boxvideo-category .video__owl .owl-prev span, .boxvideo-category.video__owl .owl-next span{display: inline-block; margin-top: -4px;}
+.video__owl.owl-theme .owl-nav [class*=owl-]:hover{background: #ebebeb;color: #000;}
+
+.list-video-other{padding-left: 0;}
+.video__flex{display: flex; flex-wrap: wrap;gap: 10px;}
+.video__flex .post-video-items{width: calc(100% / 5 - 8px)}

@@ -1,0 +1,39 @@
+@include render('video') {
+// @if index($import-pages, album) {
+  /* Album */
+  .video{
+    &-grid{
+      @include grid(flex, $flex-wrap: wrap, $justify-content: null, 
+        $align-items: null, $gutter: 2%);
+    }
+    @include e(item){
+      @include grid-col($col: 3, $grid-columns: 12, $gutter: 2%);
+      cursor: pointer;
+    }
+    @include e(image){
+      position: relative;
+      margin-bottom: 10px;
+      @include p-el(before, $el-width: 40px, $el-height: 28px){
+        @include absolute($left: 50%, $top: 50%);
+        @include translate(-50%, -50%);
+        @include z-index(share-type);
+        @include bg("playin.png",$background-repeat: no-repeat,$background-size: contain,$background-position: center center);
+      }
+    }
+    @include e(img){
+      width: 100%;
+    }
+    @include e(name){
+      @include setFont(em(16), #000, 400, null);
+      text-align: center;
+    }
+    @include media("<=mobile"){
+      @include e(item){
+        @include grid-col($col: 6, $grid-columns: 12, $gutter: 2%);
+
+      }
+      @include e(name){}
+    }
+  }
+// }
+} 

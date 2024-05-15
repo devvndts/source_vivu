@@ -1,0 +1,48 @@
+@include render('header') {
+  // -----------------------------------------------------------------------------
+  // This file contains all styles related to the header of the site/application.
+  // -----------------------------------------------------------------------------
+  .header{
+    &-lang{
+      position: relative;
+      img:first-child{}
+      &-control{
+        @include grid( flex, $flex-wrap: wrap, $justify-content: null,
+        $align-items: center, $gutter: null);
+        @include z-index(share-type);
+        cursor: pointer;
+        position: relative;
+      }
+      &-box{
+        @include absolute($left: 0px, $top: 0);
+        @extend %transition;
+        @include z-index(share);
+        text-transform: uppercase;
+        background-color: var(--theme);
+        width: 100%;
+        border-radius: 3px;
+        opacity: 0;
+        a{
+          @include setFont(15px, #fff, 400, null, null);
+          padding: 5px;
+          display: block;
+        }
+      }
+      &.active{
+        .header-lang-box{
+          top: calc(100% + 5px);
+          opacity: 1;
+        }
+      }
+      span{
+        @include setFont(16px, var(--theme), 400, null, null);
+        text-transform: uppercase;
+        display: inline-block;
+      }
+      img:last-child{}
+    }
+    &-cart{
+
+    }
+  }
+}

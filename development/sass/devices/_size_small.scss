@@ -1,0 +1,12 @@
+@media screen 
+	and (min-width: $device_size_small)
+	and (max-width: $device_size_medium) 
+{
+  @include set_common;
+  @include set_header;
+  @include set_menu;
+  @include set_slider;
+  @include set_footer;
+  @include set_homepage;
+  @include set_product(6);
+}

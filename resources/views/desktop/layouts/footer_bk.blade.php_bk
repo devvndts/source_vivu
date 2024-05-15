@@ -1,0 +1,118 @@
+@php
+	$chinhsachs = app('chinhsachs');
+	$danhmuc_cap3 = app('danhmuc_cap3');
+	$danhmuc_cap1 = app('danhmuc_cap1');
+	$footer = app('footer');
+@endphp
+
+<div class="footer bortop">
+	<div class="footer_top">
+		<div class="center-layout px-0 footer_top_contain">
+			<div class="footer_top_one">
+				<div class="footer_box_item display-relative">
+					<p class="footer_box_title">Hỗ trợ khách hàng</p>
+					<div class="footer_box_list">
+						<div class="footer_box_list_content">@if($footer){!!$footer['noidung'.$lang]!!}@endif</div>
+						<a class="footer_box_name" href="huong-dan-mua-hang">Hướng dẫn mua hàng</a>
+						<a class="footer_box_name" href="{{route('cart.checkcart')}}">Kiểm tra đơn hàng</a>
+						<a class="footer_box_name" href="ma-giam-gia">Mã giảm giá</a>
+					</div>
+				</div>
+
+				<div class="footer_box_item display-relative">
+					<p class="footer_box_title">Lovefish aqua</p>
+					<div class="footer_box_list">
+						<a class="footer_box_name" href="gioi-thieu">Giới thiệu</a>
+						<a class="footer_box_name" href="tin-tuc">Blog chia sẻ</a>
+						<a class="footer_box_name" href="khach-hang-danh-gia">Feedback</a>
+						<a class="footer_box_name" href="video">Video</a>
+						<a class="footer_box_name" href="cau-hoi">Câu hỏi</a>
+						<a class="footer_box_name" href="ho-tro">Hỗ trợ</a>
+					</div>
+				</div>	
+			</div>
+
+			<div class="footer_top_two">
+				<div class="footer_box_item display-relative">
+					<p class="footer_box_title">Sản phẩm</p>
+					@if($danhmuc_cap3)
+						@foreach($danhmuc_cap3 as $k=>$v)
+						<a class="footer_box_name" href="{{$v['tenkhongdau'.$lang]}}">{{$v['ten'.$lang]}}</a>
+						@endforeach
+					@endif
+				</div>			
+			</div>
+
+			<div class="footer_top_three display-relative">
+				@if($danhmuc_cap1)
+					@foreach($danhmuc_cap1 as $l=>$list)
+						@php
+							$danhmuc_cap2 = Helper::getLevelCategory($list,'1');
+						@endphp
+						<div class="footer_box_item">
+							<p class="footer_box_title">{{$list['ten'.$lang]}}</p>
+							@if($danhmuc_cap2)
+							<div class="footer_box_list">
+								@foreach($danhmuc_cap2 as $k=>$v)
+								<a class="footer_box_name" href="{{$list['tenkhongdau'.$lang]}}/{{$v['tenkhongdau'.$lang]}}">{{$v['ten'.$lang]}}</a>
+								@endforeach					
+							</div>
+							@endif
+						</div>
+					@endforeach
+				@endif
+			</div>
+
+			<div class="footer_top_four display-relative">
+				<div class="footer_box_item">
+					<p class="footer_box_title">Chính sách</p>
+					<div class="footer_box_list">
+						@if($chinhsachs)
+							@foreach($chinhsachs as $k=>$v)
+							<a class="footer_box_name" href="{{$v['tenkhongdau'.$lang]}}">{{$v['ten'.$lang]}}</a>
+							@endforeach
+						@endif
+					</div>
+				</div>
+			</div>
+
+			<div class="footer_top_five display-relative">
+				<p class="footer_box_title">Đăng ký nhận tin</p>
+				<form class="d-flex footer__newletter mb-4 frm_newsletter //frm_check_recaptcha" action="{{route('sendNewsletter')}}" method="post">
+					@csrf
+					<input type="email" name="email" placeholder="Nhập email của bạn" required>
+					<input type="hidden" name="type" value="dangkynhanvoucher" />
+					<input type="hidden" name="isrecaptcha" value="0" />
+					<button type="submit"></button>
+				</form>
+				<p class="footer_top_slogan">Đăng kí để nhận chương trình khuyến mãi đến từ LOVEFISH</p>
+				<div class="footer_top_mxh">
+					<p class="footer_top_title">Kết nối với chúng tôi</p>
+					<div class="d-flex footer_top_mxhmain">
+						@php
+							$mangxahoi_f = app('mangxahoi_f');
+						@endphp
+						@foreach($mangxahoi_f as $k=>$v)
+							<a target="_blank" href="{{$v['link']}}" class="mr-3"><img src="{{ (isset($v['photo']))?UPLOAD_PHOTO.$v['photo']:'' }}" alt="{{$v['ten'.$lang]}}" ></a>	
+						@endforeach
+					</div>
+					<div class="footer_top_right mt-3"><a href="{{app('bocongthuong')['link']}}" class=""><img src="{{ (isset($photo_static['bocongthuong']['photo']))?Thumb::Crop(UPLOAD_PHOTO,$photo_static['bocongthuong']['photo'],110,43,2):'' }}" onerror=src="{{asset('img/noimage.png')}}" alt="bo-cong-thuong"></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="center-layout footer_bottom">
+		<div>©2021 LOVEFISH. All rights reserved. Design by Miko Tech</div>
+		<div class="footer_bottom_right">
+			<a class=""><img src="img/icon/tt1.png" alt="thanh-toan"></a>
+			<a class=""><img src="img/icon/tt2.png" alt="thanh-toan"></a>
+			<a class=""><img src="img/icon/tt3.png" alt="thanh-toan"></a>
+			<a class=""><img src="img/icon/vc1.png" alt="thanh-toan"></a>
+			<a class=""><img src="img/icon/vc2.png" alt="thanh-toan"></a>
+		</div>
+	</div>
+</div>
+
+
+<div class="back-to-top"><i class="far fa-arrow-to-top"></i></div>
+{{--<div id="messages-facebook"></div>--}}

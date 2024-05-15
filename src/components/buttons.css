@@ -1,0 +1,36 @@
+    .btn {
+        @apply py-2.5 px-5 mr-2 mb-2 text-sm font-medium rounded-lg cursor-pointer;
+    }
+
+    .btn-theme{
+        @apply text-white bg-secondary focus:outline-none hover:bg-secondary-800 focus:ring-4 focus:ring-secondary-300;
+    }
+
+    .btn-primary{
+        @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300; 
+            /* background: url('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png');  
+            background-image: url("/img/desktop/RADIAL.png");
+            background: theme('backgroundImage.newsletter'); 
+            background: var(--mybg);
+            */
+    }
+
+    .btn-success{
+        @apply text-white bg-green-700 focus:outline-none hover:bg-green-800 focus:ring-4 focus:ring-green-300;
+    }
+
+    .btn-danger{
+        @apply text-white bg-red-700 focus:outline-none hover:bg-red-800 focus:ring-4 focus:ring-red-300;
+    }
+
+    .btn-warning{
+        @apply text-white bg-yellow-400 focus:outline-none hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300;
+    }
+
+    .btn-info{
+        @apply text-white bg-purple-700 focus:outline-none hover:bg-purple-800 focus:ring-4 focus:ring-purple-300;
+    }
+
+    .btn-dark{
+        @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
+    }

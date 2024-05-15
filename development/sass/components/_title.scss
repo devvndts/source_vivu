@@ -1,0 +1,81 @@
+@include render('title') {
+  .main-title{
+    $this: &;
+    // @include grid(flex, $flex-wrap: wrap, $justify-content: space-between, $align-items: center);
+    position: relative;
+    margin-bottom: 20px;
+    // background-color: #fff;
+    img{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @include e(link){
+      @include setFont(36px, var(--theme2), 700, null, null);
+      @include transition;
+      position: relative;
+      text-transform: uppercase;
+      text-align: center;
+      // width: fit-content;
+      // margin: 0 auto;
+      display: block;
+      &.text-white{
+        color: #fff;
+      }
+      &[href]{
+        cursor: pointer;
+        @include hover{
+          color: var(--theme2);
+        }
+      }
+    }
+    @include e(desc){
+      @include setFont(14px, #9F9F9F, 400, null, null);
+      // @include grid(inline-flex, $flex-wrap: wrap, $justify-content: null, $align-items: center, $gutter: null);
+      // text-transform: uppercase;
+      // position: relative;
+      max-width: 450px;
+      margin: 0 auto;
+      // display: block;
+      // text-align: center;
+      &.text-white{
+        color: #fff;
+      }
+      &.text-theme2{
+        // &:before{
+        //   background-color: var(--theme2);
+        // }
+      }
+    } 
+    @include e(line){
+      // @include bg("idx-tit.png",$background-repeat: no-repeat,$background-size: null,$background-position: center 0,$background-color: null);
+      // height: 12px;
+      // border: 0;
+      // margin: 0;
+    } 
+    @include m(center){ 
+      text-align: center;
+      #{$this}__link{
+        // margin: 0 auto;
+
+      }
+      #{$this}__line{
+        // margin: 5px auto 0;
+      }
+    }
+    @include m(white){ 
+      @include e(link){
+        // color: #fff;
+      }
+      @include e(desc){
+        // color: #fff;
+      }
+      @include e(line){
+        // background-color: #fff;
+        &::before{
+          // filter: brightness(0) invert(1);
+        }
+      }
+    }
+  }
+  // end main-title
+}

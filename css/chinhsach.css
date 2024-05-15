@@ -1,0 +1,19 @@
+/* .detail-page-chinhsach{display: flex;} */
+/* .chinhsach-left{width: 30%;} */
+/* .chinhsach-right{width: 70%;padding-left: 5%} */
+
+.chinhsach-list-title{text-transform: uppercase;font-size: 1rem; font-weight: 600; margin-bottom: 10px;position: relative;}
+.chinhsach-other{list-style-type: none;padding-left: 0;}
+.chinhsach-other li a{display: block; padding: 0.625rem 1rem;color: #000;}
+.chinhsach-other li >div{padding: 0.625rem 1rem;color: #000;}
+.chinhsach-other li .chinhsach-active{border-radius: 8px;font-weight: bold;}
+
+.detail-page-chinhsach .title-main{text-align: left;font-size: 1rem;border-bottom: 1px solid #ebebeb; padding-bottom: 15px;font-weight: bold;}
+.chinhsach-left-main{position: sticky;top: 100px;}
+.chinh-sach-toggle{position: absolute;right: 0;top: 0;width: 20px;height: 20px;cursor: pointer;}
+.chinh-sach-toggle:after{content: '';position: absolute;border-top: 2px solid #999; width: 100%; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.chinh-sach-toggle:before{content: '';position: absolute;border-left: 2px solid #999; height: 100%; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+
+.chinhsach-left-box{border-bottom: 1px solid #ccc; margin-bottom: 20px;}
+.chinhsach-left-box:last-child{border: none;margin: 0;}
+.post-active{display: block;}

@@ -1,0 +1,18 @@
+@include render('custom') {
+  .main_content {
+    @include z-index(default);
+    position: relative;
+  }
+  .container {
+    max-width: $container-width * 1px;
+    position: relative;
+  }
+  .container-2 {
+    max-width: $container2-width * 1px;
+    position: relative;
+  }
+  .container-3 {
+    max-width: $container3-width * 1px;
+    position: relative;
+  }
+}

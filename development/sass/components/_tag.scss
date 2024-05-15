@@ -1,0 +1,39 @@
+@include render('tag') {
+    .tag{
+        &-wrap{
+        }
+        &-list{
+            @include grid(flex, $flex-wrap: wrap, $justify-content: flex-start, 
+              $align-items: center, $gutter: null);
+            @include e(title){
+                @include setFont(15px, #fff, 500, $text-font);
+                text-transform: uppercase;
+                display: inline-block;
+                margin-right: 5px;
+                margin-bottom: 10px;
+            }
+        }
+        &-item{
+            @include grid(inline-flex, $flex-wrap: wrap, $justify-content: null, 
+              $align-items: center, $gutter: null);
+            @include setFont(15px, #000, 400, $text-font);
+            @include transition;
+            position: relative;
+            padding: 5px 40px;
+            background-color: #fff;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            i{
+                // font-size: 7px;
+                // font-weight: 700;
+                // margin-right: 10px;
+            }
+            @include doubly(){
+                margin-left: 10px;
+            }
+            @include hover{
+                color: $theme;
+            }
+        }
+    }
+}
